@@ -1,24 +1,18 @@
-<<<<<<< HEAD
-"""Integration tests for Hetzner"""
-=======
+"""Integration tests for Hetzner Legacy"""
+
 from unittest import TestCase
->>>>>>> 517ffac7 (Rewrite hetzner provider for hetzner cloud)
 
 from integration_tests import IntegrationTestsV2
 
 
-<<<<<<< HEAD
 # Hook into testing framework by inheriting unittest.TestCase and reuse
 # the tests which *each and every* implementation of the interface must
 # pass, by inheritance from integration_tests.IntegrationTests
-class TestHetznerProvider(IntegrationTestsV2):
-    """TestCase for Hetzner"""
-
-=======
 class HetznerProviderTests(TestCase, IntegrationTestsV2):
->>>>>>> 517ffac7 (Rewrite hetzner provider for hetzner cloud)
-    provider_name = "hetzner"
-    domain = "devcoop.de"
+    """TestCase for Hetzner Legacy"""
+
+    provider_name = "hetzner_legacy"
+    domain = "hetzner-api-test.de"
 
     def _filter_headers(self):
-        return ["Authorization"]
+        return ["Auth-API-Token"]

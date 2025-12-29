@@ -301,16 +301,14 @@ class HetznerCloud(BaseProvider):
             LOGGER.info(f"Record {rtype} {name} {content} already exists")
             return True
 
-        self._post(
+        action = self._post(
             f"{self._rrset_url(name, rtype)}/actions/add_records",
-            cast(
-                dict[str, Any],
-                AddRecordsRequest(
-                    ttl=self._get_ttl(), records=[self._record_from(rtype, content)]
-                ),
+            AddRecordsRequest(
+                ttl=self._get_ttl(), records=[self._record_from(rtype, content)]
             ),
-        )
-        return True
+        )['action']
+
+        return self._wait_for_action(action)
 
     def list_records(
         self,
@@ -345,8 +343,7 @@ class HetznerCloud(BaseProvider):
             return True
         elif rtype is not None and name is not None and content is not None:
             # identifier doesnt matter in this case
-            self._change_content(rtype, name, new_content=content)
-            return True
+            return self._change_content(rtype, name, new_content=content)
         else:
             return False
 
@@ -376,7 +373,7 @@ class HetznerCloud(BaseProvider):
             return True
         else:
             # Record should be taken out of set
-            self._post(
+            action = self._post(
                 f"{self._rrset_url(name, rtype)}/actions/remove_records",
                 cast(
                     dict[str, Any],
@@ -384,8 +381,9 @@ class HetznerCloud(BaseProvider):
                         {"records": [self._record_from(rtype, content)]}
                     ),
                 ),
-            )
-            return True
+            )['action']
+
+            return self._wait_for_action(action)
 
     # Helpers
     def _request(
@@ -410,6 +408,26 @@ class HetznerCloud(BaseProvider):
         # if the request fails for any reason, throw an error.
         response.raise_for_status()
         return response.json()
+
+    def _get_action(self, action_id):
+        return self._get(
+            f"/actions/{action_id}"
+        )['action']
+
+    def _is_action_running(self, action):
+        return action['status'] == "running"
+
+    def _was_action_successful(self, action):
+        return action['status'] == "success"
+
+    def _wait_for_action(self, action):
+        if not self._is_action_running(action):
+            return self._was_action_successful(action)
+
+        while self._is_action_running(action):
+            action = self._get_action(action['id'])
+
+        return self._was_action_successful(action)
 
     def _fetch_zone(self, domain: str) -> dict[str, Any]:
         try:
@@ -454,14 +472,14 @@ class HetznerCloud(BaseProvider):
         return
 
     def _change_content(self, rtype: str, name: str, new_content: str):
-        self._post(
+        action = self._post(
             f"{self._rrset_url(name, rtype)}/actions/set_records",
             cast(
                 dict[str, Any],
                 SetRecordsRequest(records=[self._record_from(rtype, new_content)]),
             ),
-        )
-        return
+        )['action']
+        return self._wait_for_action(action)
 
     def _find_record(
         self, identifier: str, content: Optional[str] = None

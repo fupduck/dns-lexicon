@@ -22,7 +22,7 @@ interactions:
         \       \"mode\": \"primary\",\n        \"ttl\": 86400,\n        \"labels\":
         {},\n        \"primary_nameservers\": [],\n        \"created\": \"2025-10-28T13:34:24Z\",\n
         \       \"protection\": {\n            \"delete\": false\n        },\n        \"status\":
-        \"ok\",\n        \"authoritative_nameservers\": {\n            \"assigned\":
+        \"updating\",\n        \"authoritative_nameservers\": {\n            \"assigned\":
         [\n                \"hydrogen.ns.hetzner.com.\",\n                \"oxygen.ns.hetzner.com.\",\n
         \               \"helium.ns.hetzner.de.\"\n            ],\n            \"delegated\":
         [\n                \"helium.ns.hetzner.de.\",\n                \"hydrogen.ns.hetzner.com.\",\n
@@ -46,27 +46,27 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 29 Dec 2025 15:59:04 GMT
+      - Mon, 29 Dec 2025 18:41:04 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Traceparent:
-      - 00-ca25b30c398a80c7d49bada9958a97cb-c25fefe5b1557818-01
+      - 00-ea1804628cb92de75423961e4c58fcaa-ce71fab9ee315562-01
       Transfer-Encoding:
       - chunked
       Uber-Trace-Id:
-      - ca25b30c398a80c7d49bada9958a97cb:c25fefe5b1557818:0:1
+      - ea1804628cb92de75423961e4c58fcaa:ce71fab9ee315562:0:1
       Vary:
       - Accept-Encoding
       X-Correlation-Id:
-      - ca25b30c398a80c7d49bada9958a97cb
+      - ea1804628cb92de75423961e4c58fcaa
       content-length:
-      - '856'
+      - '862'
       ratelimit-limit:
       - '3600'
       ratelimit-remaining:
-      - '3563'
+      - '3564'
       ratelimit-reset:
-      - '1767023981'
+      - '1767033700'
     status:
       code: 200
       message: OK
@@ -139,7 +139,7 @@ interactions:
         \           \"type\": \"SOA\",\n            \"ttl\": null,\n            \"labels\":
         {},\n            \"protection\": {\n                \"change\": false\n            },\n
         \           \"records\": [\n                {\n                    \"value\":
-        \"hydrogen.ns.hetzner.com. dns.hetzner.com. 2025123054 86400 10800 3600000
+        \"hydrogen.ns.hetzner.com. dns.hetzner.com. 2026010122 86400 10800 3600000
         3600\",\n                    \"comment\": \"\"\n                }\n            ],\n
         \           \"zone\": 53091\n        },\n        {\n            \"id\": \"_acme-challenge.createrecordset/TXT\",\n
         \           \"name\": \"_acme-challenge.createrecordset\",\n            \"type\":
@@ -250,29 +250,29 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 29 Dec 2025 15:59:04 GMT
+      - Mon, 29 Dec 2025 18:41:04 GMT
       Link:
       - <https://api.hetzner.cloud/v1/zones/53091/rrsets?page=1&per_page=25>; rel="last"
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Traceparent:
-      - 00-2849cd4d5b6f0d4992335f15657c3bf4-381e5831cadfdd22-01
+      - 00-02e15b463de62d57369e966f0eb51f99-f87cee8e8c5572ce-01
       Transfer-Encoding:
       - chunked
       Uber-Trace-Id:
-      - 2849cd4d5b6f0d4992335f15657c3bf4:381e5831cadfdd22:0:1
+      - 02e15b463de62d57369e966f0eb51f99:f87cee8e8c5572ce:0:1
       Vary:
       - Accept-Encoding
       X-Correlation-Id:
-      - 2849cd4d5b6f0d4992335f15657c3bf4
+      - 02e15b463de62d57369e966f0eb51f99
       content-length:
       - '10987'
       ratelimit-limit:
       - '3600'
       ratelimit-remaining:
-      - '3562'
+      - '3563'
       ratelimit-reset:
-      - '1767023982'
+      - '1767033701'
     status:
       code: 200
       message: OK

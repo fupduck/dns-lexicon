@@ -38,23 +38,23 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 29 Dec 2025 15:58:30 GMT
+      - Mon, 29 Dec 2025 18:40:30 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Traceparent:
-      - 00-6740008bf7450a19dbdd627ca3d6ea76-63989081bb3dcec8-01
+      - 00-a37f9179e33741378191ed5282893d72-f9d8cdcf8ea1ff2f-01
       Uber-Trace-Id:
-      - 6740008bf7450a19dbdd627ca3d6ea76:63989081bb3dcec8:0:1
+      - a37f9179e33741378191ed5282893d72:f9d8cdcf8ea1ff2f:0:1
       Vary:
       - Accept-Encoding
       X-Correlation-Id:
-      - 6740008bf7450a19dbdd627ca3d6ea76
+      - a37f9179e33741378191ed5282893d72
       ratelimit-limit:
       - '3600'
       ratelimit-remaining:
       - '3598'
       ratelimit-reset:
-      - '1767023912'
+      - '1767033632'
     status:
       code: 404
       message: Not Found

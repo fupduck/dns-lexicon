@@ -46,27 +46,27 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 29 Dec 2025 15:59:04 GMT
+      - Mon, 29 Dec 2025 18:41:04 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Traceparent:
-      - 00-16ce8fecbd1fea1a831bfed3489bf113-d3bd3d277d683c6d-01
+      - 00-c9894be1c32d571d77e23cbd256736c1-9418adaea5fe6cf7-01
       Transfer-Encoding:
       - chunked
       Uber-Trace-Id:
-      - 16ce8fecbd1fea1a831bfed3489bf113:d3bd3d277d683c6d:0:1
+      - c9894be1c32d571d77e23cbd256736c1:9418adaea5fe6cf7:0:1
       Vary:
       - Accept-Encoding
       X-Correlation-Id:
-      - 16ce8fecbd1fea1a831bfed3489bf113
+      - c9894be1c32d571d77e23cbd256736c1
       content-length:
       - '862'
       ratelimit-limit:
       - '3600'
       ratelimit-remaining:
-      - '3568'
+      - '3569'
       ratelimit-reset:
-      - '1767023976'
+      - '1767033695'
     status:
       code: 200
       message: OK
@@ -139,7 +139,7 @@ interactions:
         \           \"type\": \"SOA\",\n            \"ttl\": null,\n            \"labels\":
         {},\n            \"protection\": {\n                \"change\": false\n            },\n
         \           \"records\": [\n                {\n                    \"value\":
-        \"hydrogen.ns.hetzner.com. dns.hetzner.com. 2025123054 86400 10800 3600000
+        \"hydrogen.ns.hetzner.com. dns.hetzner.com. 2026010122 86400 10800 3600000
         3600\",\n                    \"comment\": \"\"\n                }\n            ],\n
         \           \"zone\": 53091\n        },\n        {\n            \"id\": \"_acme-challenge.createrecordset/TXT\",\n
         \           \"name\": \"_acme-challenge.createrecordset\",\n            \"type\":
@@ -250,29 +250,29 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 29 Dec 2025 15:59:04 GMT
+      - Mon, 29 Dec 2025 18:41:04 GMT
       Link:
       - <https://api.hetzner.cloud/v1/zones/53091/rrsets?page=1&per_page=25>; rel="last"
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Traceparent:
-      - 00-40bdb07811e49920a77c1cb7b566a853-06f75fb889c4d6d8-01
+      - 00-21de66210728c777d0399b4e640640f7-0f06049b456006ff-01
       Transfer-Encoding:
       - chunked
       Uber-Trace-Id:
-      - 40bdb07811e49920a77c1cb7b566a853:06f75fb889c4d6d8:0:1
+      - 21de66210728c777d0399b4e640640f7:0f06049b456006ff:0:1
       Vary:
       - Accept-Encoding
       X-Correlation-Id:
-      - 40bdb07811e49920a77c1cb7b566a853
+      - 21de66210728c777d0399b4e640640f7
       content-length:
       - '10987'
       ratelimit-limit:
       - '3600'
       ratelimit-remaining:
-      - '3567'
+      - '3568'
       ratelimit-reset:
-      - '1767023977'
+      - '1767033696'
     status:
       code: 200
       message: OK

@@ -28,7 +28,7 @@ interactions:
         [\n                \"helium.ns.hetzner.de.\",\n                \"hydrogen.ns.hetzner.com.\",\n
         \               \"oxygen.ns.hetzner.com.\"\n            ],\n            \"delegation_last_check\":
         \"2025-12-25T04:47:05Z\",\n            \"delegation_status\": \"valid\"\n
-        \       },\n        \"record_count\": 27,\n        \"registrar\": \"hetzner\"\n
+        \       },\n        \"record_count\": 28,\n        \"registrar\": \"hetzner\"\n
         \   }\n}"
     headers:
       Access-Control-Allow-Headers:
@@ -46,19 +46,19 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 29 Dec 2025 15:58:30 GMT
+      - Mon, 29 Dec 2025 18:40:30 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Traceparent:
-      - 00-e391e713810474dd0a0a950e3cb838e8-ca0f9a7c95ed8643-01
+      - 00-6a7570f7ca50653a710f71ee1a4063fb-68689b376bcf7924-01
       Transfer-Encoding:
       - chunked
       Uber-Trace-Id:
-      - e391e713810474dd0a0a950e3cb838e8:ca0f9a7c95ed8643:0:1
+      - 6a7570f7ca50653a710f71ee1a4063fb:68689b376bcf7924:0:1
       Vary:
       - Accept-Encoding
       X-Correlation-Id:
-      - e391e713810474dd0a0a950e3cb838e8
+      - 6a7570f7ca50653a710f71ee1a4063fb
       content-length:
       - '856'
       ratelimit-limit:
@@ -66,7 +66,7 @@ interactions:
       ratelimit-remaining:
       - '3599'
       ratelimit-reset:
-      - '1767023911'
+      - '1767033631'
     status:
       code: 200
       message: OK

@@ -512,7 +512,7 @@ class HetznerCloud(BaseProvider):
                 "name": self._full_name(rrset["name"]),
                 "content": record["value"]
                 if rrset["type"] != "TXT"
-                else record["value"].replace('""', " ").lstrip('"').rstrip('"'),
+                else record["value"].removeprefix('"').removesuffix('"').replace('\\"', '"'),
                 "type": rrset["type"],
                 "ttl": rrset["ttl"],
             }

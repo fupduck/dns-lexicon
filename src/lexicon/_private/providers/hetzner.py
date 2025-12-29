@@ -506,18 +506,32 @@ class HetznerCloud(BaseProvider):
         return f"{self._zone_url()}/rrsets/{rrset_name}/{rtype}"
 
     def _rrset_to_records(self, rrset: RecordSet) -> list[dict[str, Any]]:
-        return [
-            {
-                "id": rrset["id"],
-                "name": self._full_name(rrset["name"]),
-                "content": record["value"]
-                if rrset["type"] != "TXT"
-                else record["value"].replace('""', " ").lstrip('"').rstrip('"'),
-                "type": rrset["type"],
-                "ttl": rrset["ttl"],
-            }
-            for record in rrset["records"]
-        ]
+        if rrset["type"] != "TXT":
+            return [
+                {
+                    "id": rrset["id"],
+                    "name": self._full_name(rrset["name"]),
+                    "content": record["value"],
+                    "type": rrset["type"],
+                    "ttl": rrset["ttl"],
+                }
+                for record in rrset["records"]
+            ]
+        else:
+            content = "".join(map(
+                lambda record: record["value"].removeprefix('"').removesuffix('"'),
+                rrset["records"]
+            )).replace('""',' ').replace('\\"', '"')
+            return [
+                {
+                    "id": rrset["id"],
+                    "name": self._full_name(rrset["name"]),
+                    "content": content,
+                    "type": rrset["type"],
+                    "ttl": rrset["ttl"],
+                }
+            ]
+
 
     @staticmethod
     def _records_from(rtype: str, content: str) -> list[Record]:

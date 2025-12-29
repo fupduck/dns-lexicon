@@ -5,6 +5,7 @@ import logging
 import requests
 from argparse import ArgumentParser
 from typing import List, Any, TypedDict, Union, cast, Optional
+from textwrap import wrap
 from lexicon.config import ConfigResolver
 from lexicon.exceptions import AuthenticationError, LexiconError
 from lexicon.interfaces import Provider as BaseProvider
@@ -304,7 +305,7 @@ class HetznerCloud(BaseProvider):
         action = self._post(
             f"{self._rrset_url(name, rtype)}/actions/add_records",
             AddRecordsRequest(
-                ttl=self._get_ttl(), records=[self._record_from(rtype, content)]
+                ttl=self._get_ttl(), records=self._records_from(rtype, content)
             ),
         )['action']
 
@@ -378,7 +379,7 @@ class HetznerCloud(BaseProvider):
                 cast(
                     dict[str, Any],
                     RemoveRecordsRequest(
-                        {"records": [self._record_from(rtype, content)]}
+                        {"records": self._records_from(rtype, content)}
                     ),
                 ),
             )['action']
@@ -476,7 +477,7 @@ class HetznerCloud(BaseProvider):
             f"{self._rrset_url(name, rtype)}/actions/set_records",
             cast(
                 dict[str, Any],
-                SetRecordsRequest(records=[self._record_from(rtype, new_content)]),
+                SetRecordsRequest(records=self._records_from(rtype, new_content)),
             ),
         )['action']
         return self._wait_for_action(action)
@@ -519,10 +520,9 @@ class HetznerCloud(BaseProvider):
         ]
 
     @staticmethod
-    def _record_from(rtype: str, content: str) -> Record:
-        escaped_content = (
-            "".join(map(lambda part: f'"{part}"', content.split()))
-            if rtype == "TXT"
-            else content
-        )
-        return Record({"value": escaped_content})
+    def _records_from(rtype: str, content: str) -> list[Record]:
+        escaped_content = content.replace("\"", "\\\"")
+        return list(map(
+            lambda string: Record({"value": f'"{string}"'}),
+            wrap(escaped_content, 255)
+        ))

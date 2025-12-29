@@ -304,8 +304,11 @@ class HetznerCloud(BaseProvider):
 
         action = self._post(
             f"{self._rrset_url(name, rtype)}/actions/add_records",
-            AddRecordsRequest(
-                ttl=self._get_ttl(), records=self._records_from(rtype, content)
+            cast(
+                dict[str, Any],
+                AddRecordsRequest(
+                    ttl=self._get_ttl(), records=self._records_from(rtype, content)
+                ),
             ),
         )['action']
 

@@ -83,17 +83,17 @@ Lexicon currently supports 89 providers:
 +-----------------+-----------------+-----------------+-----------------+-----------------+
 | cloudns_        | cloudxns_       | conoha_         | constellix_     | ddns_           |
 +-----------------+-----------------+-----------------+-----------------+-----------------+
-| devnomads_      | digitalocean_   | dinahosting_    | directadmin_    | dnsimple_       |
+| desec_          | devnomads_      | digitalocean_   | dinahosting_    | directadmin_    |
 +-----------------+-----------------+-----------------+-----------------+-----------------+
-| dnsmadeeasy_    | dnspark_        | dnspod_         | dnsservices_    | dreamhost_      |
+| dnsimple_       | dnsmadeeasy_    | dnspark_        | dnspod_         | dnsservices_    |
 +-----------------+-----------------+-----------------+-----------------+-----------------+
-| duckdns_        | dynu_           | easydns_        | easyname_       | euserv_         |
+| dreamhost_      | duckdns_        | dynu_           | easydns_        | easyname_       |
 +-----------------+-----------------+-----------------+-----------------+-----------------+
-| exoscale_       | flexibleengine_ | gandi_          | gehirn_         | glesys_         |
+| euserv_         | exoscale_       | flexibleengine_ | gandi_          | gehirn_         |
 +-----------------+-----------------+-----------------+-----------------+-----------------+
-| godaddy_        | googleclouddns_ | gransy_         | gratisdns_      | henet_          |
+| glesys_         | godaddy_        | googleclouddns_ | gransy_         | gratisdns_      |
 +-----------------+-----------------+-----------------+-----------------+-----------------+
-| hetzner_        | hetzner_legacy_ | hostingde_      | hover_          | infoblox_       |
+| henet_          | hetzner_        | hostingde_      | hover_          | infoblox_       |
 +-----------------+-----------------+-----------------+-----------------+-----------------+
 | infomaniak_     | internetbs_     | inwx_           | ionos_          | joker_          |
 +-----------------+-----------------+-----------------+-----------------+-----------------+
@@ -103,17 +103,17 @@ Lexicon currently supports 89 providers:
 +-----------------+-----------------+-----------------+-----------------+-----------------+
 | netcup_         | nfsn_           | njalla_         | nsone_          | oci_            |
 +-----------------+-----------------+-----------------+-----------------+-----------------+
-| onapp_          |  online_        | ovh_            | plesk_          | pointhq_        |
+| onapp_          | online_         | ovh_            | plesk_          | pointhq_        |
 +-----------------+-----------------+-----------------+-----------------+-----------------+
 | porkbun_        | powerdns_       | qcloud_         | rackspace_      | rage4_          |
 +-----------------+-----------------+-----------------+-----------------+-----------------+
 | rcodezero_      | regfish_        | route53_        | safedns_        | sakuracloud_    |
 +-----------------+-----------------+-----------------+-----------------+-----------------+
-| scaleway_       |  softlayer_     | timeweb_        | transip_        | ultradns_       |
+| scaleway_       | softlayer_      | timeweb_        | transip_        | ultradns_       |
 +-----------------+-----------------+-----------------+-----------------+-----------------+
-|  valuedomain_   | vercel_         | vultr_          | wedos_          | yandex_         |
+| valuedomain_    | vercel_         | vultr_          | wedos_          | yandex_         |
 +-----------------+-----------------+-----------------+-----------------+-----------------+
-|  yandexcloud_   | zeit_           | zilore_         | zonomi_         |                 |
+| yandexcloud_    | zeit_           | zilore_         | zonomi_         |                 |
 +-----------------+-----------------+-----------------+-----------------+-----------------+
 
 .. tag: providers-table-end
@@ -128,6 +128,7 @@ Lexicon currently supports 89 providers:
 .. _conoha: https://www.conoha.jp/docs/
 .. _constellix: https://api-docs.constellix.com/?version=latest
 .. _ddns: https://www.rfc-editor.org/rfc/rfc2136
+.. _desec: https://desec.readthedocs.io/en/latest/
 .. _devnomads: https://api.devnomads.nl/api/documentation
 .. _digitalocean: https://developers.digitalocean.com/documentation/v2/#create-a-new-domain
 .. _dinahosting: https://en.dinahosting.com/api
@@ -154,7 +155,7 @@ Lexicon currently supports 89 providers:
 .. _gratisdns:
 .. _henet: https://dns.he.net/
 .. _hetzner: https://docs.hetzner.cloud/reference/cloud#dns
-.. _hostingde:
+.. _hostingde: https://www.hosting.de/
 .. _hover: https://www.hover.com/
 .. _infoblox: https://docs.infoblox.com/display/ilp/infoblox+documentation+portal
 .. _infomaniak: https://www.infomaniak.com

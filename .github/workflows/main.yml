@@ -28,9 +28,6 @@ jobs:
             toxenv: cover
           - os: ubuntu-24.04
             python: "3.14"
-            toxenv: light
-          - os: ubuntu-24.04
-            python: "3.14"
             toxenv: lint
           - os: ubuntu-24.04
             python: "3.14"

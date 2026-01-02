@@ -18,12 +18,17 @@ jobs:
   pypi:
     runs-on: ubuntu-24.04
     needs: [main]
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
       - name: Install uv
         uses: astral-sh/setup-uv@v7
-      - name: Publish sdist & wheel to PyPI
+      - name: Publish PyPI
         run: |
           uv build
           uv publish

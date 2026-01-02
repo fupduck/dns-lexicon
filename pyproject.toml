@@ -3,8 +3,8 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "dns-lexicon"
-version = "3.23.2"
+name = "dns-lexicon-coop"
+version = "3.24.0"
 description = "Manipulate DNS records on various DNS providers in a standardized/agnostic way"
 license = "MIT"
 keywords = ["dns", "lexicon", "dns-lexicon", "dehydrated", "letsencrypt"]

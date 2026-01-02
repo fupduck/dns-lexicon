@@ -26,9 +26,7 @@ jobs:
       - name: Publish sdist & wheel to PyPI
         run: |
           uv build
-          uv publish --username __token__ --password "${PYPI_TOKEN}"
-        env:
-          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+          uv publish
   github:
     runs-on: ubuntu-24.04
     needs: [pypi]

@@ -521,8 +521,7 @@ class HetznerCloud(BaseProvider):
             for record in rrset["records"]
         ]
 
-    @staticmethod
-    def _records_from(rtype: str, content: str) -> list[Record]:
+    def _records_from(self, rtype: str, content: str) -> list[Record]:
         escaped_content = content.replace("\"", "\\\"")
         return list(map(
             lambda string: Record({"value": f'"{string}"'}),

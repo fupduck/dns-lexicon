@@ -83,7 +83,6 @@ class Provider(BaseProvider):
 
 
 class HetznerDns(BaseProvider):
-    API_VERSION = "1.0"
 
     @staticmethod
     def get_nameservers() -> List[str]:

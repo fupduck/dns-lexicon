@@ -306,7 +306,7 @@ class HetznerCloud(BaseProvider):
             cast(
                 dict[str, Any],
                 AddRecordsRequest(
-                    ttl=self._get_ttl(), records=self._records_from(rtype, content)
+                    ttl=self._get_ttl(), records=self._records_from(content)
                 ),
             ),
         )['action']
@@ -381,7 +381,7 @@ class HetznerCloud(BaseProvider):
                 cast(
                     dict[str, Any],
                     RemoveRecordsRequest(
-                        {"records": self._records_from(rtype, content)}
+                        {"records": self._records_from(content)}
                     ),
                 ),
             )['action']
@@ -479,7 +479,7 @@ class HetznerCloud(BaseProvider):
             f"{self._rrset_url(name, rtype)}/actions/set_records",
             cast(
                 dict[str, Any],
-                SetRecordsRequest(records=self._records_from(rtype, new_content)),
+                SetRecordsRequest(records=self._records_from(new_content)),
             ),
         )['action']
         return self._wait_for_action(action)
@@ -521,7 +521,7 @@ class HetznerCloud(BaseProvider):
             for record in rrset["records"]
         ]
 
-    def _records_from(self, rtype: str, content: str) -> list[Record]:
+    def _records_from(self, content: str) -> list[Record]:
         escaped_content = content.replace("\"", "\\\"")
         return list(map(
             lambda string: Record({"value": f'"{string}"'}),

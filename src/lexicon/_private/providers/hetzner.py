@@ -284,7 +284,7 @@ class HetznerCloud(BaseProvider):
 
     @staticmethod
     def get_nameservers() -> list[str]:
-        return ["ns.hetzner.com"]
+        return ["hydrogen.ns.hetzner.com", "oxygen.ns.hetzner.com", "helium.ns.hetzner.de"]
 
     @staticmethod
     def configure_parser(parser: ArgumentParser) -> None:

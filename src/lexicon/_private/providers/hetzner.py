@@ -272,7 +272,6 @@ CreateRecordSetRequest = TypedDict(
         "records": list[Record],
     },
 )
-SetRecordsRequest = TypedDict("SetRecordsRequest", {"records": list[Record]})
 RemoveRecordsRequest = TypedDict("RemoveRecordsRequest", {"records": list[Record]})
 SetTtlRequest = TypedDict("SetTtlRequest", {"ttl": int})
 
@@ -473,10 +472,7 @@ class HetznerCloud(BaseProvider):
     def _change_content(self, rtype: str, name: str, new_content: str):
         action = self._post(
             f"{self._rrset_url(name, rtype)}/actions/set_records",
-            cast(
-                dict[str, Any],
-                SetRecordsRequest(records=self._records_from(new_content)),
-            ),
+            { 'records': self._records_from(new_content) }
         )['action']
         return self._wait_for_action(action)
 

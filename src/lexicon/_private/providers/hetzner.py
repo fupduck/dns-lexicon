@@ -426,7 +426,7 @@ class HetznerCloud(BaseProvider):
             return self._was_action_successful(action)
 
         while self._is_action_running(action):
-            sleep(1)
+            sleep(0.5)
             action = self._get_action(action['id'])
 
         return self._was_action_successful(action)

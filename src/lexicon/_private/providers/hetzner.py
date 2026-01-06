@@ -341,14 +341,16 @@ class HetznerCloud(BaseProvider):
             raise LexiconError(
                 "Either identifier or both rtype and name need to be set in order to match a record."
             )
-        if identifier is not None and content is not None:
-            self._move_record(identifier, content, to_rtype=rtype, to_name=name)
-            return True
-        elif rtype is not None and name is not None and content is not None:
-            # identifier doesnt matter in this case
-            return self._change_content(rtype, name, new_content=content)
-        else:
-            return False
+
+        if identifier:
+            name = self._find_record(identifier)['name']
+
+        action = self._post(
+            f"{self._rrset_url(name, rtype)}/actions/set_records",
+            { 'records': self._records_from(rtype, content) }
+        )['action']
+        return self._wait_for_action(action)
+
 
     def delete_record(
         self,
@@ -444,36 +446,6 @@ class HetznerCloud(BaseProvider):
         if record_name.rstrip(".").endswith(domain):
             return self._relative_name(record_name)
         return record_name
-
-    def _move_record(
-        self,
-        identifier: str,
-        content: str,
-        to_rtype: Optional[str],
-        to_name: Optional[str],
-    ):
-        if to_rtype is None and to_name is None:
-            raise LexiconError("Either rtype or name must be set.")
-
-        original_record = self._find_record(identifier, content)
-        if original_record is None:
-            raise LexiconError("No record with identifier found")
-
-        self.create_record(
-            rtype=to_rtype or original_record["type"],
-            name=to_name or original_record["name"],
-            content=content,
-        )
-
-        self.delete_record(identifier=identifier, content=content)
-        return
-
-    def _change_content(self, rtype: str, name: str, new_content: str):
-        action = self._post(
-            f"{self._rrset_url(name, rtype)}/actions/set_records",
-            { 'records': self._records_from(new_content) }
-        )['action']
-        return self._wait_for_action(action)
 
     def _find_record(
         self, identifier: str, content: Optional[str] = None

@@ -272,7 +272,6 @@ CreateRecordSetRequest = TypedDict(
         "records": list[Record],
     },
 )
-RemoveRecordsRequest = TypedDict("RemoveRecordsRequest", {"records": list[Record]})
 SetTtlRequest = TypedDict("SetTtlRequest", {"ttl": int})
 
 
@@ -372,12 +371,7 @@ class HetznerCloud(BaseProvider):
             # Record should be taken out of set
             action = self._post(
                 f"{self._rrset_url(name, rtype)}/actions/remove_records",
-                cast(
-                    dict[str, Any],
-                    RemoveRecordsRequest(
-                        {"records": self._records_from(content)}
-                    ),
-                ),
+                {"records": self._records_from(content)}
             )['action']
 
             return self._wait_for_action(action)

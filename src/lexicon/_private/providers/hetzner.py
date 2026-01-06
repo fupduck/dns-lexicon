@@ -272,9 +272,6 @@ CreateRecordSetRequest = TypedDict(
         "records": list[Record],
     },
 )
-AddRecordsRequest = TypedDict(
-    "AddRecordsRequest", {"ttl": Optional[int], "records": list[Record]}
-)
 SetRecordsRequest = TypedDict("SetRecordsRequest", {"records": list[Record]})
 RemoveRecordsRequest = TypedDict("RemoveRecordsRequest", {"records": list[Record]})
 SetTtlRequest = TypedDict("SetTtlRequest", {"ttl": int})
@@ -306,12 +303,7 @@ class HetznerCloud(BaseProvider):
 
         action = self._post(
             f"{self._rrset_url(name, rtype)}/actions/add_records",
-            cast(
-                dict[str, Any],
-                AddRecordsRequest(
-                    ttl=self._get_ttl(), records=self._records_from(content)
-                ),
-            ),
+            { 'ttl': self._get_ttl(), 'records': self._records_from(content) }
         )['action']
 
         return self._wait_for_action(action)

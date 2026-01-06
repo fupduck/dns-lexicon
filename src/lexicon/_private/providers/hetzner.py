@@ -6,6 +6,7 @@ import requests
 from argparse import ArgumentParser
 from typing import List, Any, TypedDict, Union, cast, Optional
 from textwrap import wrap
+from time import sleep
 from lexicon.config import ConfigResolver
 from lexicon.exceptions import AuthenticationError, LexiconError
 from lexicon.interfaces import Provider as BaseProvider
@@ -428,6 +429,7 @@ class HetznerCloud(BaseProvider):
             return self._was_action_successful(action)
 
         while self._is_action_running(action):
+            sleep(1)
             action = self._get_action(action['id'])
 
         return self._was_action_successful(action)

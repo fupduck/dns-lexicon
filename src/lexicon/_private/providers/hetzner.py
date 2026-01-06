@@ -342,7 +342,7 @@ class HetznerCloud(BaseProvider):
                 "Either identifier or both rtype and name need to be set in order to match a record."
             )
 
-        if identifier:
+        if identifier and not name:
             record = self._find_record(identifier)
             if record is None:
                 raise LexiconError(f"Record with the id {identifier} does not exist.")

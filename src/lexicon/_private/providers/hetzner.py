@@ -368,8 +368,6 @@ class HetznerCloud(BaseProvider):
                 raise LexiconError(f"Record with the id {identifier} does not exist.")
             rtype = record["type"]
             name = record["name"]
-        name = cast(str, name)
-        rtype = cast(str, rtype)
         if content is None:
             # Entire record set should be deleted
             self._delete(self._rrset_url(name, rtype))

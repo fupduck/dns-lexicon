@@ -301,7 +301,7 @@ class HetznerCloud(BaseProvider):
 
         action = self._post(
             f"{self._rrset_url(name, rtype)}/actions/add_records",
-            { 'ttl': self._get_ttl(), 'records': self._records_from(rtype, content) }
+            {'ttl': self._get_ttl(), 'records': self._records_from(rtype, content)}
         )['action']
 
         return self._wait_for_action(action)
@@ -353,26 +353,24 @@ class HetznerCloud(BaseProvider):
 
         action = self._post(
             f"{self._rrset_url(name, rtype)}/actions/set_records",
-            { 'records': self._records_from(rtype, content) }
+            {'records': self._records_from(rtype, content)}
         )['action']
         return self._wait_for_action(action)
 
-
     def _move_record(self, identifier, record, rtype, name, content):
         record_sets = self._get_record_sets(rtype, record['name'])
-        records = [ record for record_set in record_sets for record in record_set['records'] ]
+        records = [record for record_set in record_sets for record in record_set['records']]
 
         try:
             action = self._post(
                 f"{self._rrset_url(name, rtype)}/actions/add_records",
-                { 'ttl': self._get_ttl(), 'records': records }
+                {'ttl': self._get_ttl(), 'records': records}
             )['action']
 
             return self._wait_for_action(action) and self.delete_record(identifier, rtype, name, content)
         except HTTPError:
             LOGGER.info("Entry you wanted to rename to already exists")
             return False
-
 
     def delete_record(
         self,
@@ -406,7 +404,7 @@ class HetznerCloud(BaseProvider):
             # Record should be taken out of set
             action = self._post(
                 f"{self._rrset_url(name, rtype)}/actions/remove_records",
-                { "records": self._records_from(rtype, content) }
+                {"records": self._records_from(rtype, content)}
             )['action']
 
             return self._wait_for_action(action)
@@ -467,7 +465,6 @@ class HetznerCloud(BaseProvider):
             else:
                 raise LexiconError(err)
 
-
     def _find_record(
         self, identifier: str, content: Optional[str] = None
     ) -> Optional[dict[str, Any]]:
@@ -521,15 +518,15 @@ class HetznerCloud(BaseProvider):
                 parts.append('"' + escaped_content[start:end] + '"')
             content = " ".join(parts)
 
-        return [{ "value": content }]
+        return [{"value": content}]
 
     def _get_record_sets(self, rtype, name):
-        response = self._get(f"{self._zone_url()}/rrsets", { 'type': rtype, 'name': self._relative_name(name) if name else None })
+        response = self._get(f"{self._zone_url()}/rrsets", {'type': rtype, 'name': self._relative_name(name) if name else None})
         record_sets: list[RecordSet] = response["rrsets"]
 
         # get paged rrsets
         while response['meta']['pagination']['page'] < response['meta']['pagination']['last_page']:
-            response = self._get(f"{self._zone_url()}/rrsets", { 'type': rtype , 'name': name,  'page': response['meta']['pagination']['next_page']})
+            response = self._get(f"{self._zone_url()}/rrsets", {'type': rtype , 'name': name,  'page': response['meta']['pagination']['next_page']})
             record_sets += response["rrsets"]
 
         return record_sets

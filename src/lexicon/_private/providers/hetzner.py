@@ -10,6 +10,7 @@ from time import sleep
 from lexicon.config import ConfigResolver
 from lexicon.exceptions import AuthenticationError, LexiconError
 from lexicon.interfaces import Provider as BaseProvider
+from requests import HTTPError
 
 LOGGER = logging.getLogger(__name__)
 
@@ -342,17 +343,43 @@ class HetznerCloud(BaseProvider):
                 "Either identifier or both rtype and name need to be set in order to match a record."
             )
 
-        if identifier and not name:
+        records = self._records_from(rtype, content)
+        if identifier:
             record = self._find_record(identifier)
             if record is None:
                 raise LexiconError(f"Record with the id {identifier} does not exist.")
-            name = record['name']
+            if not name:
+                name = record['name']
+            elif name != record['name']:
+                self._move_record(identifier, record, rtype, name, content)
 
         action = self._post(
             f"{self._rrset_url(name, rtype)}/actions/set_records",
-            { 'records': self._records_from(rtype, content) }
+            { 'records': records  }
         )['action']
         return self._wait_for_action(action)
+
+
+    def _move_record(self, identifier, record, rtype, name, content):
+        response = self._get(f"{self._zone_url()}/rrsets", { 'type': rtype, 'name': self._relative_name(record['name']) })
+        record_sets: list[RecordSet] = response["rrsets"]
+
+        # get paged rrsets
+        while response['meta']['pagination']['page'] < response['meta']['pagination']['last_page']:
+            response = self._get(f"{self._zone_url()}/rrsets"), { 'type': rtype , 'name': record['name'],  'page': response['meta']['pagination']['next_page']}
+            record_sets.append(response['rrsets'])
+        records = [ record for record_set in record_sets for record in record_set['records'] ]
+
+        try:
+            action = self._post(
+                f"{self._rrset_url(name, rtype)}/actions/add_records",
+                { 'ttl': self._get_ttl(), 'records': records }
+            )['action']
+
+            return self._wait_for_action(action) and self.delete_record(identifier, rtype, name, content)
+        except HTTPError:
+            LOGGER.info("Entry you wanted to rename to already exists")
+            return False
 
 
     def delete_record(

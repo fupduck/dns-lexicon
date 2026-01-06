@@ -337,7 +337,6 @@ class HetznerCloud(BaseProvider):
                 "Either identifier or both rtype and name need to be set in order to match a record."
             )
 
-        records = self._records_from(rtype, content)
         if identifier:
             record = self._find_record(identifier)
             if record is None:
@@ -349,7 +348,7 @@ class HetznerCloud(BaseProvider):
 
         action = self._post(
             f"{self._rrset_url(name, rtype)}/actions/set_records",
-            { 'records': records  }
+            { 'records': self._records_from(rtype, content) }
         )['action']
         return self._wait_for_action(action)
 

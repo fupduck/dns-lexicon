@@ -314,12 +314,7 @@ class HetznerCloud(BaseProvider):
         content: Optional[str] = None,
     ) -> list[dict[str, Any]]:
         response = self._get(f"{self._zone_url()}/rrsets", { 'type': rtype })
-        record_sets: list[RecordSet] = response["rrsets"]
-
-        # get paged rrsets
-        while response['meta']['pagination']['page'] < response['meta']['pagination']['last_page']:
-            response = self._get(f"{self._zone_url()}/rrsets"), { 'type': rtype , 'page': response['meta']['pagination']['next_page']}
-            record_sets.append(response['rrsets'])
+        record_sets = self._get_record_sets(rtype, name)
 
         name = self._full_name(name) if name else None
         return [
@@ -361,13 +356,7 @@ class HetznerCloud(BaseProvider):
 
 
     def _move_record(self, identifier, record, rtype, name, content):
-        response = self._get(f"{self._zone_url()}/rrsets", { 'type': rtype, 'name': self._relative_name(record['name']) })
-        record_sets: list[RecordSet] = response["rrsets"]
-
-        # get paged rrsets
-        while response['meta']['pagination']['page'] < response['meta']['pagination']['last_page']:
-            response = self._get(f"{self._zone_url()}/rrsets"), { 'type': rtype , 'name': record['name'],  'page': response['meta']['pagination']['next_page']}
-            record_sets.append(response['rrsets'])
+        record_sets = self._get_record_sets(rtype, record['name'])
         records = [ record for record_set in record_sets for record in record_set['records'] ]
 
         try:
@@ -524,3 +513,14 @@ class HetznerCloud(BaseProvider):
             content = " ".join(parts)
 
         return [{ "value": content }]
+
+    def _get_record_sets(self, rtype, name):
+        response = self._get(f"{self._zone_url()}/rrsets", { 'type': rtype, 'name': self._relative_name(name) })
+        record_sets: list[RecordSet] = response["rrsets"]
+
+        # get paged rrsets
+        while response['meta']['pagination']['page'] < response['meta']['pagination']['last_page']:
+            response = self._get(f"{self._zone_url()}/rrsets"), { 'type': rtype , 'name': name,  'page': response['meta']['pagination']['next_page']}
+            record_sets.append(response['rrsets'])
+
+        return record_sets

@@ -312,7 +312,14 @@ class HetznerCloud(BaseProvider):
         name: Optional[str] = None,
         content: Optional[str] = None,
     ) -> list[dict[str, Any]]:
-        record_sets: list[RecordSet] = self._get(f"{self._zone_url()}/rrsets")["rrsets"]
+        response = self._get(f"{self._zone_url()}/rrsets")
+        record_sets: list[RecordSet] = response["rrsets"]
+
+        # get paged rrsets
+        while response['meta']['pagination']['page'] < response['meta']['pagination']['last_page']:
+            response = self._get(f"{self._zone_url()}/rrsets?page={response['meta']['pagination']['next_page']}")
+            record_sets.append(response['rrsets'])
+
         name = self._full_name(name) if name else None
         return [
             record

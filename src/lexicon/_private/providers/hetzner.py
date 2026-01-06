@@ -471,7 +471,7 @@ class HetznerCloud(BaseProvider):
             {
                 "id": rrset["id"],
                 "name": self._full_name(rrset["name"]),
-                "content": self._get_content_from_record(record['type'], record['value']),
+                "content": self._get_content_from_record(rrset['type'], record['value']),
                 "type": rrset["type"],
                 "ttl": rrset["ttl"],
             }

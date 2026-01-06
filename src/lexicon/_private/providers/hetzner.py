@@ -439,13 +439,6 @@ class HetznerCloud(BaseProvider):
             else:
                 raise LexiconError(err)
 
-    def _to_rrset_name(self, domain: str, record_name: str) -> str:
-        """
-        Hetzner record set (rrset) names have a different format.
-        """
-        if record_name.rstrip(".").endswith(domain):
-            return self._relative_name(record_name)
-        return record_name
 
     def _find_record(
         self, identifier: str, content: Optional[str] = None
@@ -467,7 +460,7 @@ class HetznerCloud(BaseProvider):
         return f"/{self.domain_id}"
 
     def _rrset_url(self, name: str, rtype: str) -> str:
-        rrset_name = self._to_rrset_name(self.domain, name)
+        rrset_name = self._relative_name(self.domain, name)
         return f"{self._zone_url()}/rrsets/{rrset_name}/{rtype}"
 
     def _rrset_to_records(self, rrset: RecordSet) -> list[dict[str, Any]]:

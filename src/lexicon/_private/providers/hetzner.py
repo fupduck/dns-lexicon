@@ -301,7 +301,7 @@ class HetznerCloud(BaseProvider):
 
         action = self._post(
             f"{self._rrset_url(name, rtype)}/actions/add_records",
-            { 'ttl': self._get_ttl(), 'records': self._records_from(content) }
+            { 'ttl': self._get_ttl(), 'records': self._records_from(rtype, content) }
         )['action']
 
         return self._wait_for_action(action)

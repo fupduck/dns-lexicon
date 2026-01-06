@@ -343,7 +343,10 @@ class HetznerCloud(BaseProvider):
             )
 
         if identifier:
-            name = self._find_record(identifier)['name']
+            record = self._find_record(identifier)
+            if record is None:
+                raise LexiconError(f"Record with the id {identifier} does not exist.")
+            name = record['name']
 
         action = self._post(
             f"{self._rrset_url(name, rtype)}/actions/set_records",

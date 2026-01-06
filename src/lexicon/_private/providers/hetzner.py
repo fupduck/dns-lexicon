@@ -313,7 +313,6 @@ class HetznerCloud(BaseProvider):
         name: Optional[str] = None,
         content: Optional[str] = None,
     ) -> list[dict[str, Any]]:
-        response = self._get(f"{self._zone_url()}/rrsets", { 'type': rtype })
         record_sets = self._get_record_sets(rtype, name)
 
         name = self._full_name(name) if name else None

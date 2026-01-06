@@ -26,6 +26,7 @@ class Provider(BaseProvider):
 
     def __init__(self, config):
         super(Provider, self).__init__(config)
+        self.domain_id = None
         self._hetzner_impl = self._decide_provider()
 
     @staticmethod
@@ -292,6 +293,7 @@ class HetznerCloud(BaseProvider):
 
     def __init__(self, config: Union[ConfigResolver, dict[str, Any]]):
         super(HetznerCloud, self).__init__(config)
+        self.domain_id = None
 
     def authenticate(self) -> None:
         self.domain_id = self._fetch_zone(self.domain)["id"]

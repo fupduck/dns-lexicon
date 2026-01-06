@@ -341,10 +341,16 @@ class HetznerCloud(BaseProvider):
             record = self._find_record(identifier)
             if record is None:
                 raise LexiconError(f"Record with the id {identifier} does not exist.")
+            if not rtype:
+                rtype = record['type']
+
             if not name:
                 name = record['name']
             elif name != record['name']:
                 self._move_record(identifier, record, rtype, name, content)
+
+        if name is None or rtype is None or content is None:
+            return False
 
         action = self._post(
             f"{self._rrset_url(name, rtype)}/actions/set_records",
@@ -388,14 +394,20 @@ class HetznerCloud(BaseProvider):
             rtype = record["type"]
             name = record["name"]
         if content is None:
+            if name is None or rtype is None:
+                return False
+
             # Entire record set should be deleted
             action = self._delete(self._rrset_url(name, rtype))['action']
             return self._wait_for_action(action)
         else:
+            if name is None or content is None or rtype is None:
+                return False
+
             # Record should be taken out of set
             action = self._post(
                 f"{self._rrset_url(name, rtype)}/actions/remove_records",
-                {"records": self._records_from(rtype, content)}
+                { "records": self._records_from(rtype, content) }
             )['action']
 
             return self._wait_for_action(action)

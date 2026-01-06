@@ -376,7 +376,7 @@ class HetznerCloud(BaseProvider):
             # Record should be taken out of set
             action = self._post(
                 f"{self._rrset_url(name, rtype)}/actions/remove_records",
-                {"records": self._records_from(content)}
+                {"records": self._records_from(rtype, content)}
             )['action']
 
             return self._wait_for_action(action)
@@ -512,9 +512,11 @@ class HetznerCloud(BaseProvider):
             for record in rrset["records"]
         ]
 
-    def _records_from(self, content: str) -> list[Record]:
-        escaped_content = content.replace("\"", "\\\"")
-        return list(map(
-            lambda string: Record({"value": f'"{string}"'}),
-            wrap(escaped_content, 255)
-        ))
+    def _records_from(self, rtype: str, content: str) -> list[Record]:
+        if rtype == 'TXT':
+            escaped_content = content.replace("\"", "\\\"")
+            return list(map(
+                lambda string: Record({"value": f'"{string}"'}),
+                wrap(escaped_content, 255)
+            ))
+        return [{ "value": content }]

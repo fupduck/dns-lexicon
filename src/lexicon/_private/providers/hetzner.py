@@ -4,8 +4,7 @@ import json
 import logging
 import requests
 from argparse import ArgumentParser
-from typing import List, Any, TypedDict, Union, cast, Optional
-from textwrap import wrap
+from typing import List, Any, TypedDict, Union, Optional
 from time import sleep
 from lexicon.config import ConfigResolver
 from lexicon.exceptions import AuthenticationError, LexiconError

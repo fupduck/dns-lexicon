@@ -463,7 +463,7 @@ class HetznerCloud(BaseProvider):
         return f"/{self.domain_id}"
 
     def _rrset_url(self, name: str, rtype: str) -> str:
-        rrset_name = self._relative_name(self.domain, name)
+        rrset_name = self._relative_name(name)
         return f"{self._zone_url()}/rrsets/{rrset_name}/{rtype}"
 
     def _rrset_to_records(self, rrset: RecordSet) -> list[dict[str, Any]]:

@@ -519,7 +519,7 @@ class HetznerCloud(BaseProvider):
 
         # get paged rrsets
         while response['meta']['pagination']['page'] < response['meta']['pagination']['last_page']:
-            response = self._get(f"{self._zone_url()}/rrsets"), { 'type': rtype , 'name': name,  'page': response['meta']['pagination']['next_page']}
-            record_sets.append(response['rrsets'])
+            response = self._get(f"{self._zone_url()}/rrsets", { 'type': rtype , 'name': name,  'page': response['meta']['pagination']['next_page']})
+            record_sets += response["rrsets"]
 
         return record_sets

@@ -391,8 +391,8 @@ class HetznerCloud(BaseProvider):
             name = record["name"]
         if content is None:
             # Entire record set should be deleted
-            self._delete(self._rrset_url(name, rtype))
-            return True
+            action = self._delete(self._rrset_url(name, rtype))
+            return self._wait_for_action(action)
         else:
             # Record should be taken out of set
             action = self._post(

@@ -4,11 +4,12 @@ import json
 import logging
 import requests
 from argparse import ArgumentParser
-from typing import List, Any, TypedDict, Union, cast, Optional
-from textwrap import wrap
+from typing import List, Any, TypedDict, Union, Optional
+from time import sleep
 from lexicon.config import ConfigResolver
 from lexicon.exceptions import AuthenticationError, LexiconError
 from lexicon.interfaces import Provider as BaseProvider
+from requests import HTTPError
 
 LOGGER = logging.getLogger(__name__)
 
@@ -25,6 +26,7 @@ class Provider(BaseProvider):
 
     def __init__(self, config):
         super(Provider, self).__init__(config)
+        self.domain_id = None
         self._hetzner_impl = self._decide_provider()
 
     @staticmethod
@@ -83,7 +85,6 @@ class Provider(BaseProvider):
 
 
 class HetznerDns(BaseProvider):
-    API_VERSION = "1.0"
 
     @staticmethod
     def get_nameservers() -> List[str]:
@@ -271,11 +272,6 @@ CreateRecordSetRequest = TypedDict(
         "records": list[Record],
     },
 )
-AddRecordsRequest = TypedDict(
-    "AddRecordsRequest", {"ttl": Optional[int], "records": list[Record]}
-)
-SetRecordsRequest = TypedDict("SetRecordsRequest", {"records": list[Record]})
-RemoveRecordsRequest = TypedDict("RemoveRecordsRequest", {"records": list[Record]})
 SetTtlRequest = TypedDict("SetTtlRequest", {"ttl": int})
 
 
@@ -284,7 +280,7 @@ class HetznerCloud(BaseProvider):
 
     @staticmethod
     def get_nameservers() -> list[str]:
-        return ["ns.hetzner.com"]
+        return ["hydrogen.ns.hetzner.com", "oxygen.ns.hetzner.com", "helium.ns.hetzner.de"]
 
     @staticmethod
     def configure_parser(parser: ArgumentParser) -> None:
@@ -292,6 +288,7 @@ class HetznerCloud(BaseProvider):
 
     def __init__(self, config: Union[ConfigResolver, dict[str, Any]]):
         super(HetznerCloud, self).__init__(config)
+        self.domain_id = None
 
     def authenticate(self) -> None:
         self.domain_id = self._fetch_zone(self.domain)["id"]
@@ -304,12 +301,7 @@ class HetznerCloud(BaseProvider):
 
         action = self._post(
             f"{self._rrset_url(name, rtype)}/actions/add_records",
-            cast(
-                dict[str, Any],
-                AddRecordsRequest(
-                    ttl=self._get_ttl(), records=self._records_from(rtype, content)
-                ),
-            ),
+            {'ttl': self._get_ttl(), 'records': self._records_from(rtype, content)}
         )['action']
 
         return self._wait_for_action(action)
@@ -320,7 +312,8 @@ class HetznerCloud(BaseProvider):
         name: Optional[str] = None,
         content: Optional[str] = None,
     ) -> list[dict[str, Any]]:
-        record_sets: list[RecordSet] = self._get(f"{self._zone_url()}/rrsets")["rrsets"]
+        record_sets = self._get_record_sets(rtype, name)
+
         name = self._full_name(name) if name else None
         return [
             record
@@ -342,13 +335,41 @@ class HetznerCloud(BaseProvider):
             raise LexiconError(
                 "Either identifier or both rtype and name need to be set in order to match a record."
             )
-        if identifier is not None and content is not None:
-            self._move_record(identifier, content, to_rtype=rtype, to_name=name)
-            return True
-        elif rtype is not None and name is not None and content is not None:
-            # identifier doesnt matter in this case
-            return self._change_content(rtype, name, new_content=content)
-        else:
+
+        if identifier:
+            record = self._find_record(identifier)
+            if record is None:
+                raise LexiconError(f"Record with the id {identifier} does not exist.")
+            if not rtype:
+                rtype = record['type']
+
+            if not name:
+                name = record['name']
+            elif name != record['name']:
+                self._move_record(identifier, record, rtype, name, content)
+
+        if name is None or rtype is None or content is None:
+            return False
+
+        action = self._post(
+            f"{self._rrset_url(name, rtype)}/actions/set_records",
+            {'records': self._records_from(rtype, content)}
+        )['action']
+        return self._wait_for_action(action)
+
+    def _move_record(self, identifier, record, rtype, name, content):
+        record_sets = self._get_record_sets(rtype, record['name'])
+        records = [record for record_set in record_sets for record in record_set['records']]
+
+        try:
+            action = self._post(
+                f"{self._rrset_url(name, rtype)}/actions/add_records",
+                {'ttl': self._get_ttl(), 'records': records}
+            )['action']
+
+            return self._wait_for_action(action) and self.delete_record(identifier, rtype, name, content)
+        except HTTPError:
+            LOGGER.info("Entry you wanted to rename to already exists")
             return False
 
     def delete_record(
@@ -369,22 +390,21 @@ class HetznerCloud(BaseProvider):
                 raise LexiconError(f"Record with the id {identifier} does not exist.")
             rtype = record["type"]
             name = record["name"]
-        name = cast(str, name)
-        rtype = cast(str, rtype)
         if content is None:
+            if name is None or rtype is None:
+                return False
+
             # Entire record set should be deleted
-            self._delete(self._rrset_url(name, rtype))
-            return True
+            action = self._delete(self._rrset_url(name, rtype))['action']
+            return self._wait_for_action(action)
         else:
+            if name is None or content is None or rtype is None:
+                return False
+
             # Record should be taken out of set
             action = self._post(
                 f"{self._rrset_url(name, rtype)}/actions/remove_records",
-                cast(
-                    dict[str, Any],
-                    RemoveRecordsRequest(
-                        {"records": self._records_from(rtype, content)}
-                    ),
-                ),
+                {"records": self._records_from(rtype, content)}
             )['action']
 
             return self._wait_for_action(action)
@@ -429,6 +449,7 @@ class HetznerCloud(BaseProvider):
             return self._was_action_successful(action)
 
         while self._is_action_running(action):
+            sleep(0.5)
             action = self._get_action(action['id'])
 
         return self._was_action_successful(action)
@@ -443,47 +464,6 @@ class HetznerCloud(BaseProvider):
                 raise LexiconError(f"There is no zone for {domain}.")
             else:
                 raise LexiconError(err)
-
-    def _to_rrset_name(self, domain: str, record_name: str) -> str:
-        """
-        Hetzner record set (rrset) names have a different format.
-        """
-        if record_name.rstrip(".").endswith(domain):
-            return self._relative_name(record_name)
-        return record_name
-
-    def _move_record(
-        self,
-        identifier: str,
-        content: str,
-        to_rtype: Optional[str],
-        to_name: Optional[str],
-    ):
-        if to_rtype is None and to_name is None:
-            raise LexiconError("Either rtype or name must be set.")
-
-        original_record = self._find_record(identifier, content)
-        if original_record is None:
-            raise LexiconError("No record with identifier found")
-
-        self.create_record(
-            rtype=to_rtype or original_record["type"],
-            name=to_name or original_record["name"],
-            content=content,
-        )
-
-        self.delete_record(identifier=identifier, content=content)
-        return
-
-    def _change_content(self, rtype: str, name: str, new_content: str):
-        action = self._post(
-            f"{self._rrset_url(name, rtype)}/actions/set_records",
-            cast(
-                dict[str, Any],
-                SetRecordsRequest(records=self._records_from(rtype, new_content)),
-            ),
-        )['action']
-        return self._wait_for_action(action)
 
     def _find_record(
         self, identifier: str, content: Optional[str] = None
@@ -505,7 +485,7 @@ class HetznerCloud(BaseProvider):
         return f"/{self.domain_id}"
 
     def _rrset_url(self, name: str, rtype: str) -> str:
-        rrset_name = self._to_rrset_name(self.domain, name)
+        rrset_name = self._relative_name(name)
         return f"{self._zone_url()}/rrsets/{rrset_name}/{rtype}"
 
     def _rrset_to_records(self, rrset: RecordSet) -> list[dict[str, Any]]:
@@ -513,19 +493,40 @@ class HetznerCloud(BaseProvider):
             {
                 "id": rrset["id"],
                 "name": self._full_name(rrset["name"]),
-                "content": record["value"]
-                if rrset["type"] != "TXT"
-                else record["value"].removeprefix('"').removesuffix('"').replace('\\"', '"'),
+                "content": self._get_content_from_record(rrset['type'], record['value']),
                 "type": rrset["type"],
                 "ttl": rrset["ttl"],
             }
             for record in rrset["records"]
         ]
 
-    @staticmethod
-    def _records_from(rtype: str, content: str) -> list[Record]:
-        escaped_content = content.replace("\"", "\\\"")
-        return list(map(
-            lambda string: Record({"value": f'"{string}"'}),
-            wrap(escaped_content, 255)
-        ))
+    def _get_content_from_record(self, rtype: str, content: str):
+        if rtype == "TXT":
+            return content.removeprefix('"')\
+                .removesuffix('"')\
+                .replace('" "', '')\
+                .replace('\\"', '"')
+        return content
+
+    def _records_from(self, rtype: str, content: str) -> list[Record]:
+        if rtype == 'TXT':
+            escaped_content = content.replace("\"", "\\\"")
+
+            parts = []
+            for start in range(0, len(escaped_content), 255):
+                end = min(start + 255, len(escaped_content))
+                parts.append('"' + escaped_content[start:end] + '"')
+            content = " ".join(parts)
+
+        return [{"value": content}]
+
+    def _get_record_sets(self, rtype, name):
+        response = self._get(f"{self._zone_url()}/rrsets", {'type': rtype, 'name': self._relative_name(name) if name else None})
+        record_sets: list[RecordSet] = response["rrsets"]
+
+        # get paged rrsets
+        while response['meta']['pagination']['page'] < response['meta']['pagination']['last_page']:
+            response = self._get(f"{self._zone_url()}/rrsets", {'type': rtype , 'name': name,  'page': response['meta']['pagination']['next_page']})
+            record_sets += response["rrsets"]
+
+        return record_sets

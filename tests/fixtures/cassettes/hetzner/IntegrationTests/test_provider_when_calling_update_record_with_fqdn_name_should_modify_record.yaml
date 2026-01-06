@@ -5,7 +5,7 @@ interactions:
       Accept:
       - '*/*'
       Accept-Encoding:
-      - gzip, deflate
+      - gzip, deflate, zstd
       Connection:
       - keep-alive
       Content-Length:
@@ -13,7 +13,7 @@ interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - python-requests/2.32.3
+      - python-requests/2.32.5
     method: GET
     uri: https://api.hetzner.cloud/v1/zones/devcoop.de
   response:
@@ -27,8 +27,8 @@ interactions:
         \               \"helium.ns.hetzner.de.\"\n            ],\n            \"delegated\":
         [\n                \"helium.ns.hetzner.de.\",\n                \"hydrogen.ns.hetzner.com.\",\n
         \               \"oxygen.ns.hetzner.com.\"\n            ],\n            \"delegation_last_check\":
-        \"2025-12-25T04:47:05Z\",\n            \"delegation_status\": \"valid\"\n
-        \       },\n        \"record_count\": 27,\n        \"registrar\": \"hetzner\"\n
+        \"2026-01-01T04:47:17Z\",\n            \"delegation_status\": \"valid\"\n
+        \       },\n        \"record_count\": 30,\n        \"registrar\": \"hetzner\"\n
         \   }\n}"
     headers:
       Access-Control-Allow-Headers:
@@ -46,27 +46,27 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 29 Dec 2025 18:41:23 GMT
+      - Tue, 06 Jan 2026 15:43:26 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Traceparent:
-      - 00-27bd578cba4b026d050600416f01334a-8ffa50384d10c75b-01
+      - 00-bb2d3d92323e72502914597db169b225-eeeef8165362e255-01
       Transfer-Encoding:
       - chunked
       Uber-Trace-Id:
-      - 27bd578cba4b026d050600416f01334a:8ffa50384d10c75b:0:1
+      - bb2d3d92323e72502914597db169b225:eeeef8165362e255:0:1
       Vary:
       - Accept-Encoding
       X-Correlation-Id:
-      - 27bd578cba4b026d050600416f01334a
+      - bb2d3d92323e72502914597db169b225
       content-length:
       - '856'
       ratelimit-limit:
       - '3600'
       ratelimit-remaining:
-      - '3571'
+      - '3567'
       ratelimit-reset:
-      - '1767033712'
+      - '1767714239'
     status:
       code: 200
       message: OK
@@ -76,7 +76,7 @@ interactions:
       Accept:
       - '*/*'
       Accept-Encoding:
-      - gzip, deflate
+      - gzip, deflate, zstd
       Connection:
       - keep-alive
       Content-Length:
@@ -84,7 +84,149 @@ interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - python-requests/2.32.3
+      - python-requests/2.32.5
+    method: GET
+    uri: https://api.hetzner.cloud/v1/zones/53091/rrsets?type=TXT&name=orig.testfqdn
+  response:
+    body:
+      string: "{\n    \"meta\": {\n        \"pagination\": {\n            \"last_page\":
+        1,\n            \"next_page\": null,\n            \"page\": 1,\n            \"per_page\":
+        25,\n            \"previous_page\": null,\n            \"total_entries\":
+        1\n        }\n    },\n    \"rrsets\": [\n        {\n            \"id\": \"orig.testfqdn/TXT\",\n
+        \           \"name\": \"orig.testfqdn\",\n            \"type\": \"TXT\",\n
+        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
+        {\n                \"change\": false\n            },\n            \"records\":
+        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
+        \                   \"comment\": \"\"\n                }\n            ],\n
+        \           \"zone\": 53091\n        }\n    ]\n}"
+    headers:
+      Access-Control-Allow-Headers:
+      - X-Requested-With,Authorization,Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET,POST,PUT,PATCH,DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - Link,X-Correlation-ID
+      Access-Control-Max-Age:
+      - '86400'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 06 Jan 2026 15:43:26 GMT
+      Link:
+      - <https://api.hetzner.cloud/v1/zones/53091/rrsets?page=1&per_page=25>; rel="last"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Traceparent:
+      - 00-259df9ae304cd5f787050f1736e132bb-f28d527d2201de3a-01
+      Transfer-Encoding:
+      - chunked
+      Uber-Trace-Id:
+      - 259df9ae304cd5f787050f1736e132bb:f28d527d2201de3a:0:1
+      Vary:
+      - Accept-Encoding
+      X-Correlation-Id:
+      - 259df9ae304cd5f787050f1736e132bb
+      content-length:
+      - '692'
+      ratelimit-limit:
+      - '3600'
+      ratelimit-remaining:
+      - '3566'
+      ratelimit-reset:
+      - '1767714240'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, zstd
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '2'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.32.5
+    method: GET
+    uri: https://api.hetzner.cloud/v1/zones/53091/rrsets?type=TXT&name=orig.testfqdn
+  response:
+    body:
+      string: "{\n    \"meta\": {\n        \"pagination\": {\n            \"last_page\":
+        1,\n            \"next_page\": null,\n            \"page\": 1,\n            \"per_page\":
+        25,\n            \"previous_page\": null,\n            \"total_entries\":
+        1\n        }\n    },\n    \"rrsets\": [\n        {\n            \"id\": \"orig.testfqdn/TXT\",\n
+        \           \"name\": \"orig.testfqdn\",\n            \"type\": \"TXT\",\n
+        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
+        {\n                \"change\": false\n            },\n            \"records\":
+        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
+        \                   \"comment\": \"\"\n                }\n            ],\n
+        \           \"zone\": 53091\n        }\n    ]\n}"
+    headers:
+      Access-Control-Allow-Headers:
+      - X-Requested-With,Authorization,Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET,POST,PUT,PATCH,DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - Link,X-Correlation-ID
+      Access-Control-Max-Age:
+      - '86400'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 06 Jan 2026 15:43:26 GMT
+      Link:
+      - <https://api.hetzner.cloud/v1/zones/53091/rrsets?page=1&per_page=25>; rel="last"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Traceparent:
+      - 00-2068b146d697f85a4a06ae0b3ca5223f-054e9e53d7cc6e35-01
+      Transfer-Encoding:
+      - chunked
+      Uber-Trace-Id:
+      - 2068b146d697f85a4a06ae0b3ca5223f:054e9e53d7cc6e35:0:1
+      Vary:
+      - Accept-Encoding
+      X-Correlation-Id:
+      - 2068b146d697f85a4a06ae0b3ca5223f
+      content-length:
+      - '692'
+      ratelimit-limit:
+      - '3600'
+      ratelimit-remaining:
+      - '3565'
+      ratelimit-reset:
+      - '1767714241'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, zstd
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '2'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.32.5
     method: GET
     uri: https://api.hetzner.cloud/v1/zones/53091/rrsets
   response:
@@ -92,7 +234,7 @@ interactions:
       string: "{\n    \"meta\": {\n        \"pagination\": {\n            \"last_page\":
         1,\n            \"next_page\": null,\n            \"page\": 1,\n            \"per_page\":
         25,\n            \"previous_page\": null,\n            \"total_entries\":
-        23\n        }\n    },\n    \"rrsets\": [\n        {\n            \"id\": \"localhost/A\",\n
+        25\n        }\n    },\n    \"rrsets\": [\n        {\n            \"id\": \"localhost/A\",\n
         \           \"name\": \"localhost\",\n            \"type\": \"A\",\n            \"ttl\":
         3600,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
         false\n            },\n            \"records\": [\n                {\n                    \"value\":
@@ -109,25 +251,37 @@ interactions:
         {\n                \"change\": false\n            },\n            \"records\":
         [\n                {\n                    \"value\": \"195.201.131.78\",\n
         \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"nominatim/AAAA\",\n
-        \           \"name\": \"nominatim\",\n            \"type\": \"AAAA\",\n            \"ttl\":
+        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"qwer/A\",\n
+        \           \"name\": \"qwer\",\n            \"type\": \"A\",\n            \"ttl\":
         3600,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
         false\n            },\n            \"records\": [\n                {\n                    \"value\":
-        \"2a01:4f8:c012:9603::1\",\n                    \"comment\": \"\"\n                }\n
+        \"127.0.0.1\",\n                    \"comment\": \"\"\n                }\n
         \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"osm.service.linke.projects/AAAA\",\n            \"name\": \"osm.service.linke.projects\",\n
-        \           \"type\": \"AAAA\",\n            \"ttl\": 1800,\n            \"labels\":
-        {},\n            \"protection\": {\n                \"change\": false\n            },\n
-        \           \"records\": [\n                {\n                    \"value\":
-        \"2a01:4f8:1c1c:4181::1\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"docs/CNAME\",\n            \"name\": \"docs\",\n            \"type\": \"CNAME\",\n
+        \"qwer2/A\",\n            \"name\": \"qwer2\",\n            \"type\": \"A\",\n
         \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
         {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"docs.example.com\",\n
+        [\n                {\n                    \"value\": \"127.0.0.1\",\n                    \"comment\":
+        \"\"\n                },\n                {\n                    \"value\":
+        \"127.0.0.2\",\n                    \"comment\": \"\"\n                }\n
+        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
+        \"nominatim/AAAA\",\n            \"name\": \"nominatim\",\n            \"type\":
+        \"AAAA\",\n            \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
+        {\n                \"change\": false\n            },\n            \"records\":
+        [\n                {\n                    \"value\": \"2a01:4f8:c012:9603::1\",\n
         \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"@/NS\",\n
-        \           \"name\": \"@\",\n            \"type\": \"NS\",\n            \"ttl\":
+        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"osm.service.linke.projects/AAAA\",\n
+        \           \"name\": \"osm.service.linke.projects\",\n            \"type\":
+        \"AAAA\",\n            \"ttl\": 1800,\n            \"labels\": {},\n            \"protection\":
+        {\n                \"change\": false\n            },\n            \"records\":
+        [\n                {\n                    \"value\": \"2a01:4f8:1c1c:4181::1\",\n
+        \                   \"comment\": \"\"\n                }\n            ],\n
+        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"docs/CNAME\",\n
+        \           \"name\": \"docs\",\n            \"type\": \"CNAME\",\n            \"ttl\":
+        3600,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
+        false\n            },\n            \"records\": [\n                {\n                    \"value\":
+        \"docs.example.com\",\n                    \"comment\": \"\"\n                }\n
+        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
+        \"@/NS\",\n            \"name\": \"@\",\n            \"type\": \"NS\",\n            \"ttl\":
         null,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
         false\n            },\n            \"records\": [\n                {\n                    \"value\":
         \"helium.ns.hetzner.de.\",\n                    \"comment\": \"\"\n                },\n
@@ -139,7 +293,7 @@ interactions:
         \           \"type\": \"SOA\",\n            \"ttl\": null,\n            \"labels\":
         {},\n            \"protection\": {\n                \"change\": false\n            },\n
         \           \"records\": [\n                {\n                    \"value\":
-        \"hydrogen.ns.hetzner.com. dns.hetzner.com. 2026010126 86400 10800 3600000
+        \"hydrogen.ns.hetzner.com. dns.hetzner.com. 2026010797 86400 10800 3600000
         3600\",\n                    \"comment\": \"\"\n                }\n            ],\n
         \           \"zone\": 53091\n        },\n        {\n            \"id\": \"_acme-challenge.createrecordset/TXT\",\n
         \           \"name\": \"_acme-challenge.createrecordset\",\n            \"type\":
@@ -193,8 +347,20 @@ interactions:
         \           \"records\": [\n                {\n                    \"value\":
         \"\\\"updated\\\"\",\n                    \"comment\": \"\"\n                }\n
         \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"random.fqdntest/TXT\",\n            \"name\": \"random.fqdntest\",\n            \"type\":
+        \"orig.testfqdn/TXT\",\n            \"name\": \"orig.testfqdn\",\n            \"type\":
         \"TXT\",\n            \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
+        {\n                \"change\": false\n            },\n            \"records\":
+        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
+        \                   \"comment\": \"\"\n                }\n            ],\n
+        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"orig.testfull/TXT\",\n
+        \           \"name\": \"orig.testfull\",\n            \"type\": \"TXT\",\n
+        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
+        {\n                \"change\": false\n            },\n            \"records\":
+        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
+        \                   \"comment\": \"\"\n                }\n            ],\n
+        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"random.fqdntest/TXT\",\n
+        \           \"name\": \"random.fqdntest\",\n            \"type\": \"TXT\",\n
+        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
         {\n                \"change\": false\n            },\n            \"records\":
         [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
         \                   \"comment\": \"\"\n                }\n            ],\n
@@ -221,14 +387,73 @@ interactions:
         {\n                \"change\": false\n            },\n            \"records\":
         [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
         \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"updated.testfqdn/TXT\",\n
-        \           \"name\": \"updated.testfqdn\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"updated.testfull/TXT\",\n
-        \           \"name\": \"updated.testfull\",\n            \"type\": \"TXT\",\n
+        \           \"zone\": 53091\n        }\n    ]\n}"
+    headers:
+      Access-Control-Allow-Headers:
+      - X-Requested-With,Authorization,Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET,POST,PUT,PATCH,DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - Link,X-Correlation-ID
+      Access-Control-Max-Age:
+      - '86400'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 06 Jan 2026 15:43:26 GMT
+      Link:
+      - <https://api.hetzner.cloud/v1/zones/53091/rrsets?page=1&per_page=25>; rel="last"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Traceparent:
+      - 00-9cc5edcc8b158fd4d4f7ae7c1fc69b1f-59b0c3366c15b9ef-01
+      Transfer-Encoding:
+      - chunked
+      Uber-Trace-Id:
+      - 9cc5edcc8b158fd4d4f7ae7c1fc69b1f:59b0c3366c15b9ef:0:1
+      Vary:
+      - Accept-Encoding
+      X-Correlation-Id:
+      - 9cc5edcc8b158fd4d4f7ae7c1fc69b1f
+      content-length:
+      - '11902'
+      ratelimit-limit:
+      - '3600'
+      ratelimit-remaining:
+      - '3564'
+      ratelimit-reset:
+      - '1767714242'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, zstd
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '2'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.32.5
+    method: GET
+    uri: https://api.hetzner.cloud/v1/zones/53091/rrsets?type=TXT&name=orig.testfqdn
+  response:
+    body:
+      string: "{\n    \"meta\": {\n        \"pagination\": {\n            \"last_page\":
+        1,\n            \"next_page\": null,\n            \"page\": 1,\n            \"per_page\":
+        25,\n            \"previous_page\": null,\n            \"total_entries\":
+        1\n        }\n    },\n    \"rrsets\": [\n        {\n            \"id\": \"orig.testfqdn/TXT\",\n
+        \           \"name\": \"orig.testfqdn\",\n            \"type\": \"TXT\",\n
         \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
         {\n                \"change\": false\n            },\n            \"records\":
         [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
@@ -250,54 +475,54 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 29 Dec 2025 18:41:23 GMT
+      - Tue, 06 Jan 2026 15:43:26 GMT
       Link:
       - <https://api.hetzner.cloud/v1/zones/53091/rrsets?page=1&per_page=25>; rel="last"
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Traceparent:
-      - 00-a2a21f8001738d1b11d033602ecba6ee-037d4de116d62a37-01
+      - 00-1cedd97fd9f06477237ea691a60b9916-3b53bd5a377a51e2-01
       Transfer-Encoding:
       - chunked
       Uber-Trace-Id:
-      - a2a21f8001738d1b11d033602ecba6ee:037d4de116d62a37:0:1
+      - 1cedd97fd9f06477237ea691a60b9916:3b53bd5a377a51e2:0:1
       Vary:
       - Accept-Encoding
       X-Correlation-Id:
-      - a2a21f8001738d1b11d033602ecba6ee
+      - 1cedd97fd9f06477237ea691a60b9916
       content-length:
-      - '10987'
+      - '692'
       ratelimit-limit:
       - '3600'
       ratelimit-remaining:
-      - '3570'
+      - '3563'
       ratelimit-reset:
-      - '1767033713'
+      - '1767714243'
     status:
       code: 200
       message: OK
 - request:
-    body: '{"ttl": 3600, "records": [{"value": "\"challengetoken\""}]}'
+    body: '{"ttl": 3600, "records": [{"value": "\"challengetoken\"", "comment": ""}]}'
     headers:
       Accept:
       - '*/*'
       Accept-Encoding:
-      - gzip, deflate
+      - gzip, deflate, zstd
       Connection:
       - keep-alive
       Content-Length:
-      - '59'
+      - '74'
       Content-Type:
       - application/json
       User-Agent:
-      - python-requests/2.32.3
+      - python-requests/2.32.5
     method: POST
-    uri: https://api.hetzner.cloud/v1/zones/53091/rrsets/orig.testfqdn/TXT/actions/add_records
+    uri: https://api.hetzner.cloud/v1/zones/53091/rrsets/updated.testfqdn/TXT/actions/add_records
   response:
     body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392577,\n        \"status\":
+      string: "{\n    \"action\": {\n        \"id\": 603554582835984,\n        \"status\":
         \"running\",\n        \"command\": \"add_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:23Z\",\n        \"finished\":
+        0,\n        \"started\": \"2026-01-06T15:43:26Z\",\n        \"finished\":
         null,\n        \"error\": null,\n        \"resources\": [\n            {\n
         \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
         \       ]\n    }\n}"
@@ -319,21 +544,21 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 29 Dec 2025 18:41:23 GMT
+      - Tue, 06 Jan 2026 15:43:26 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Traceparent:
-      - 00-b39f076d1e2fed85f08bf1109db692c4-446575e1b410df42-01
+      - 00-aa1547d3c9f389669a042a6504720417-3cf5cd344d93344b-01
       Uber-Trace-Id:
-      - b39f076d1e2fed85f08bf1109db692c4:446575e1b410df42:0:1
+      - aa1547d3c9f389669a042a6504720417:3cf5cd344d93344b:0:1
       X-Correlation-Id:
-      - b39f076d1e2fed85f08bf1109db692c4
+      - aa1547d3c9f389669a042a6504720417
       ratelimit-limit:
       - '7200'
       ratelimit-remaining:
-      - '6342'
+      - '7191'
       ratelimit-reset:
-      - '1767034112'
+      - '1767714211'
     status:
       code: 201
       message: Created
@@ -343,7 +568,7 @@ interactions:
       Accept:
       - '*/*'
       Accept-Encoding:
-      - gzip, deflate
+      - gzip, deflate, zstd
       Connection:
       - keep-alive
       Content-Length:
@@ -351,14 +576,14 @@ interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - python-requests/2.32.3
+      - python-requests/2.32.5
     method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392577
+    uri: https://api.hetzner.cloud/v1/zones/actions/603554582835984
   response:
     body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392577,\n        \"status\":
+      string: "{\n    \"action\": {\n        \"id\": 603554582835984,\n        \"status\":
         \"running\",\n        \"command\": \"add_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:23Z\",\n        \"finished\":
+        0,\n        \"started\": \"2026-01-06T15:43:26Z\",\n        \"finished\":
         null,\n        \"error\": null,\n        \"resources\": [\n            {\n
         \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
         \       ]\n    }\n}"
@@ -378,27 +603,27 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 29 Dec 2025 18:41:24 GMT
+      - Tue, 06 Jan 2026 15:43:27 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Traceparent:
-      - 00-8aa34b8d3afc6fd237f2cf9974d5f681-a0ac2f7fb13e9e27-01
+      - 00-d5232971e00c9fd63153deac0719ffe7-7ea28ce912b0b37f-01
       Transfer-Encoding:
       - chunked
       Uber-Trace-Id:
-      - 8aa34b8d3afc6fd237f2cf9974d5f681:a0ac2f7fb13e9e27:0:1
+      - d5232971e00c9fd63153deac0719ffe7:7ea28ce912b0b37f:0:1
       Vary:
       - Accept-Encoding
       X-Correlation-Id:
-      - 8aa34b8d3afc6fd237f2cf9974d5f681
+      - d5232971e00c9fd63153deac0719ffe7
       content-length:
       - '361'
       ratelimit-limit:
       - '7200'
       ratelimit-remaining:
-      - '6341'
+      - '7191'
       ratelimit-reset:
-      - '1767034113'
+      - '1767714211'
     status:
       code: 200
       message: OK
@@ -408,7 +633,7 @@ interactions:
       Accept:
       - '*/*'
       Accept-Encoding:
-      - gzip, deflate
+      - gzip, deflate, zstd
       Connection:
       - keep-alive
       Content-Length:
@@ -416,14 +641,14 @@ interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - python-requests/2.32.3
+      - python-requests/2.32.5
     method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392577
+    uri: https://api.hetzner.cloud/v1/zones/actions/603554582835984
   response:
     body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392577,\n        \"status\":
+      string: "{\n    \"action\": {\n        \"id\": 603554582835984,\n        \"status\":
         \"running\",\n        \"command\": \"add_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:23Z\",\n        \"finished\":
+        0,\n        \"started\": \"2026-01-06T15:43:26Z\",\n        \"finished\":
         null,\n        \"error\": null,\n        \"resources\": [\n            {\n
         \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
         \       ]\n    }\n}"
@@ -443,27 +668,27 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 29 Dec 2025 18:41:24 GMT
+      - Tue, 06 Jan 2026 15:43:27 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Traceparent:
-      - 00-e73bbf78cc48d53c2141e92b5bd6af7f-59870f93e1ebe95f-01
+      - 00-711079485622afd7df2de613dcc2da96-d7a36635893c6c13-01
       Transfer-Encoding:
       - chunked
       Uber-Trace-Id:
-      - e73bbf78cc48d53c2141e92b5bd6af7f:59870f93e1ebe95f:0:1
+      - 711079485622afd7df2de613dcc2da96:d7a36635893c6c13:0:1
       Vary:
       - Accept-Encoding
       X-Correlation-Id:
-      - e73bbf78cc48d53c2141e92b5bd6af7f
+      - 711079485622afd7df2de613dcc2da96
       content-length:
       - '361'
       ratelimit-limit:
       - '7200'
       ratelimit-remaining:
-      - '6340'
+      - '7191'
       ratelimit-reset:
-      - '1767034114'
+      - '1767714212'
     status:
       code: 200
       message: OK
@@ -473,7 +698,7 @@ interactions:
       Accept:
       - '*/*'
       Accept-Encoding:
-      - gzip, deflate
+      - gzip, deflate, zstd
       Connection:
       - keep-alive
       Content-Length:
@@ -481,14 +706,14 @@ interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - python-requests/2.32.3
+      - python-requests/2.32.5
     method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392577
+    uri: https://api.hetzner.cloud/v1/zones/actions/603554582835984
   response:
     body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392577,\n        \"status\":
+      string: "{\n    \"action\": {\n        \"id\": 603554582835984,\n        \"status\":
         \"running\",\n        \"command\": \"add_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:23Z\",\n        \"finished\":
+        50,\n        \"started\": \"2026-01-06T15:43:26Z\",\n        \"finished\":
         null,\n        \"error\": null,\n        \"resources\": [\n            {\n
         \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
         \       ]\n    }\n}"
@@ -508,742 +733,27 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 29 Dec 2025 18:41:24 GMT
+      - Tue, 06 Jan 2026 15:43:28 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Traceparent:
-      - 00-e93408ac5c5fe51b2ab5f818495f2c5b-06e241eb2d5ca35b-01
+      - 00-905e51a3cb9376bac67ae257e6bcf7b8-fbfb8807afb9ddc9-01
       Transfer-Encoding:
       - chunked
       Uber-Trace-Id:
-      - e93408ac5c5fe51b2ab5f818495f2c5b:06e241eb2d5ca35b:0:1
+      - 905e51a3cb9376bac67ae257e6bcf7b8:fbfb8807afb9ddc9:0:1
       Vary:
       - Accept-Encoding
       X-Correlation-Id:
-      - e93408ac5c5fe51b2ab5f818495f2c5b
-      content-length:
-      - '361'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6339'
-      ratelimit-reset:
-      - '1767034114'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392577
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392577,\n        \"status\":
-        \"running\",\n        \"command\": \"add_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:23Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:24 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-91b46c32dc29c7d889e9061dd3b4e405-4277a3127064fb4d-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - 91b46c32dc29c7d889e9061dd3b4e405:4277a3127064fb4d:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - 91b46c32dc29c7d889e9061dd3b4e405
-      content-length:
-      - '361'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6338'
-      ratelimit-reset:
-      - '1767034115'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392577
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392577,\n        \"status\":
-        \"running\",\n        \"command\": \"add_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:23Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:24 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-54c8500b053d8ab4d1696de93d204923-cbf9db103793f7ca-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - 54c8500b053d8ab4d1696de93d204923:cbf9db103793f7ca:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - 54c8500b053d8ab4d1696de93d204923
-      content-length:
-      - '361'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6337'
-      ratelimit-reset:
-      - '1767034115'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392577
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392577,\n        \"status\":
-        \"running\",\n        \"command\": \"add_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:23Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:24 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-fc3b4b71833a81f970f0a0aeb46ef798-b46d43005e3cbe1e-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - fc3b4b71833a81f970f0a0aeb46ef798:b46d43005e3cbe1e:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - fc3b4b71833a81f970f0a0aeb46ef798
-      content-length:
-      - '361'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6336'
-      ratelimit-reset:
-      - '1767034116'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392577
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392577,\n        \"status\":
-        \"running\",\n        \"command\": \"add_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:23Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:24 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-5a3a34546a462a180fbe8983d03c4dbf-e84bc851973a7eb3-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - 5a3a34546a462a180fbe8983d03c4dbf:e84bc851973a7eb3:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - 5a3a34546a462a180fbe8983d03c4dbf
-      content-length:
-      - '361'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6335'
-      ratelimit-reset:
-      - '1767034117'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392577
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392577,\n        \"status\":
-        \"running\",\n        \"command\": \"add_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:23Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:24 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-5ee8b295475f1888af2b6ca405215372-939b2dd616985bd7-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - 5ee8b295475f1888af2b6ca405215372:939b2dd616985bd7:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - 5ee8b295475f1888af2b6ca405215372
-      content-length:
-      - '361'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6334'
-      ratelimit-reset:
-      - '1767034117'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392577
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392577,\n        \"status\":
-        \"running\",\n        \"command\": \"add_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:23Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:24 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-db52eaa5bd886aee76c3af9ebb211dfb-60a5e3c8aeab3a7c-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - db52eaa5bd886aee76c3af9ebb211dfb:60a5e3c8aeab3a7c:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - db52eaa5bd886aee76c3af9ebb211dfb
-      content-length:
-      - '361'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6333'
-      ratelimit-reset:
-      - '1767034118'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392577
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392577,\n        \"status\":
-        \"running\",\n        \"command\": \"add_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:23Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:24 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-909f91f2a8c8ec92ef0116c7c3a4443c-a02cbcdc30d239bf-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - 909f91f2a8c8ec92ef0116c7c3a4443c:a02cbcdc30d239bf:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - 909f91f2a8c8ec92ef0116c7c3a4443c
-      content-length:
-      - '361'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6332'
-      ratelimit-reset:
-      - '1767034118'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392577
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392577,\n        \"status\":
-        \"running\",\n        \"command\": \"add_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:23Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:25 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-9de37c04593fd8a3931f285542557056-4515833685ee5de5-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - 9de37c04593fd8a3931f285542557056:4515833685ee5de5:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - 9de37c04593fd8a3931f285542557056
-      content-length:
-      - '361'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6331'
-      ratelimit-reset:
-      - '1767034119'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392577
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392577,\n        \"status\":
-        \"running\",\n        \"command\": \"add_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:23Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:25 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-a0c4bf93d6d3c50ed604c04b481c34a4-d5763bb50ffe3b06-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - a0c4bf93d6d3c50ed604c04b481c34a4:d5763bb50ffe3b06:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - a0c4bf93d6d3c50ed604c04b481c34a4
-      content-length:
-      - '361'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6330'
-      ratelimit-reset:
-      - '1767034120'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392577
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392577,\n        \"status\":
-        \"running\",\n        \"command\": \"add_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:23Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:25 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-f49aeda6dbc06e490891dc53fc05c075-3bed9c913d6087eb-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - f49aeda6dbc06e490891dc53fc05c075:3bed9c913d6087eb:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - f49aeda6dbc06e490891dc53fc05c075
-      content-length:
-      - '361'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6329'
-      ratelimit-reset:
-      - '1767034120'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392577
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392577,\n        \"status\":
-        \"running\",\n        \"command\": \"add_rrset_records\",\n        \"progress\":
-        50,\n        \"started\": \"2025-12-29T18:41:23Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:25 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-b11358b82a4a02c623aa3520ec1d38c6-3a50ed7d1503c906-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - b11358b82a4a02c623aa3520ec1d38c6:3a50ed7d1503c906:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - b11358b82a4a02c623aa3520ec1d38c6
+      - 905e51a3cb9376bac67ae257e6bcf7b8
       content-length:
       - '362'
       ratelimit-limit:
       - '7200'
       ratelimit-remaining:
-      - '6328'
+      - '7191'
       ratelimit-reset:
-      - '1767034121'
+      - '1767714213'
     status:
       code: 200
       message: OK
@@ -1253,7 +763,7 @@ interactions:
       Accept:
       - '*/*'
       Accept-Encoding:
-      - gzip, deflate
+      - gzip, deflate, zstd
       Connection:
       - keep-alive
       Content-Length:
@@ -1261,210 +771,15 @@ interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - python-requests/2.32.3
+      - python-requests/2.32.5
     method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392577
+    uri: https://api.hetzner.cloud/v1/zones/actions/603554582835984
   response:
     body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392577,\n        \"status\":
-        \"running\",\n        \"command\": \"add_rrset_records\",\n        \"progress\":
-        50,\n        \"started\": \"2025-12-29T18:41:23Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:25 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-86e41f3174acfa1ee6025687035d551a-2b1ef3514c275519-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - 86e41f3174acfa1ee6025687035d551a:2b1ef3514c275519:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - 86e41f3174acfa1ee6025687035d551a
-      content-length:
-      - '362'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6327'
-      ratelimit-reset:
-      - '1767034121'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392577
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392577,\n        \"status\":
-        \"running\",\n        \"command\": \"add_rrset_records\",\n        \"progress\":
-        50,\n        \"started\": \"2025-12-29T18:41:23Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:25 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-5ccdf8dad53a45ec991083785ff79092-0b8c3596d044ec36-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - 5ccdf8dad53a45ec991083785ff79092:0b8c3596d044ec36:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - 5ccdf8dad53a45ec991083785ff79092
-      content-length:
-      - '362'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6326'
-      ratelimit-reset:
-      - '1767034122'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392577
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392577,\n        \"status\":
-        \"running\",\n        \"command\": \"add_rrset_records\",\n        \"progress\":
-        50,\n        \"started\": \"2025-12-29T18:41:23Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:25 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-fca4fb9d229077abf0402bfac2daba76-9a466c20415797fc-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - fca4fb9d229077abf0402bfac2daba76:9a466c20415797fc:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - fca4fb9d229077abf0402bfac2daba76
-      content-length:
-      - '362'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6325'
-      ratelimit-reset:
-      - '1767034123'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392577
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392577,\n        \"status\":
+      string: "{\n    \"action\": {\n        \"id\": 603554582835984,\n        \"status\":
         \"success\",\n        \"command\": \"add_rrset_records\",\n        \"progress\":
-        100,\n        \"started\": \"2025-12-29T18:41:23Z\",\n        \"finished\":
-        \"2025-12-29T18:41:25Z\",\n        \"error\": null,\n        \"resources\":
+        100,\n        \"started\": \"2026-01-06T15:43:26Z\",\n        \"finished\":
+        \"2026-01-06T15:43:28Z\",\n        \"error\": null,\n        \"resources\":
         [\n            {\n                \"id\": 53091,\n                \"type\":
         \"zone\"\n            }\n        ]\n    }\n}"
     headers:
@@ -1483,27 +798,27 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 29 Dec 2025 18:41:25 GMT
+      - Tue, 06 Jan 2026 15:43:29 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Traceparent:
-      - 00-774e903823eba3df60c3ac0fb6861ff7-5f7074a376194b3f-01
+      - 00-112ce58f5006f7a754f31c7deab8aa55-3257b0270599e654-01
       Transfer-Encoding:
       - chunked
       Uber-Trace-Id:
-      - 774e903823eba3df60c3ac0fb6861ff7:5f7074a376194b3f:0:1
+      - 112ce58f5006f7a754f31c7deab8aa55:3257b0270599e654:0:1
       Vary:
       - Accept-Encoding
       X-Correlation-Id:
-      - 774e903823eba3df60c3ac0fb6861ff7
+      - 112ce58f5006f7a754f31c7deab8aa55
       content-length:
       - '381'
       ratelimit-limit:
       - '7200'
       ratelimit-remaining:
-      - '6324'
+      - '7191'
       ratelimit-reset:
-      - '1767034123'
+      - '1767714213'
     status:
       code: 200
       message: OK
@@ -1513,7 +828,7 @@ interactions:
       Accept:
       - '*/*'
       Accept-Encoding:
-      - gzip, deflate
+      - gzip, deflate, zstd
       Connection:
       - keep-alive
       Content-Length:
@@ -1521,15 +836,15 @@ interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - python-requests/2.32.3
+      - python-requests/2.32.5
     method: GET
     uri: https://api.hetzner.cloud/v1/zones/53091/rrsets
   response:
     body:
       string: "{\n    \"meta\": {\n        \"pagination\": {\n            \"last_page\":
-        1,\n            \"next_page\": null,\n            \"page\": 1,\n            \"per_page\":
+        2,\n            \"next_page\": 2,\n            \"page\": 1,\n            \"per_page\":
         25,\n            \"previous_page\": null,\n            \"total_entries\":
-        24\n        }\n    },\n    \"rrsets\": [\n        {\n            \"id\": \"localhost/A\",\n
+        26\n        }\n    },\n    \"rrsets\": [\n        {\n            \"id\": \"localhost/A\",\n
         \           \"name\": \"localhost\",\n            \"type\": \"A\",\n            \"ttl\":
         3600,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
         false\n            },\n            \"records\": [\n                {\n                    \"value\":
@@ -1546,25 +861,37 @@ interactions:
         {\n                \"change\": false\n            },\n            \"records\":
         [\n                {\n                    \"value\": \"195.201.131.78\",\n
         \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"nominatim/AAAA\",\n
-        \           \"name\": \"nominatim\",\n            \"type\": \"AAAA\",\n            \"ttl\":
+        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"qwer/A\",\n
+        \           \"name\": \"qwer\",\n            \"type\": \"A\",\n            \"ttl\":
         3600,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
         false\n            },\n            \"records\": [\n                {\n                    \"value\":
-        \"2a01:4f8:c012:9603::1\",\n                    \"comment\": \"\"\n                }\n
+        \"127.0.0.1\",\n                    \"comment\": \"\"\n                }\n
         \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"osm.service.linke.projects/AAAA\",\n            \"name\": \"osm.service.linke.projects\",\n
-        \           \"type\": \"AAAA\",\n            \"ttl\": 1800,\n            \"labels\":
-        {},\n            \"protection\": {\n                \"change\": false\n            },\n
-        \           \"records\": [\n                {\n                    \"value\":
-        \"2a01:4f8:1c1c:4181::1\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"docs/CNAME\",\n            \"name\": \"docs\",\n            \"type\": \"CNAME\",\n
+        \"qwer2/A\",\n            \"name\": \"qwer2\",\n            \"type\": \"A\",\n
         \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
         {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"docs.example.com\",\n
+        [\n                {\n                    \"value\": \"127.0.0.1\",\n                    \"comment\":
+        \"\"\n                },\n                {\n                    \"value\":
+        \"127.0.0.2\",\n                    \"comment\": \"\"\n                }\n
+        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
+        \"nominatim/AAAA\",\n            \"name\": \"nominatim\",\n            \"type\":
+        \"AAAA\",\n            \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
+        {\n                \"change\": false\n            },\n            \"records\":
+        [\n                {\n                    \"value\": \"2a01:4f8:c012:9603::1\",\n
         \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"@/NS\",\n
-        \           \"name\": \"@\",\n            \"type\": \"NS\",\n            \"ttl\":
+        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"osm.service.linke.projects/AAAA\",\n
+        \           \"name\": \"osm.service.linke.projects\",\n            \"type\":
+        \"AAAA\",\n            \"ttl\": 1800,\n            \"labels\": {},\n            \"protection\":
+        {\n                \"change\": false\n            },\n            \"records\":
+        [\n                {\n                    \"value\": \"2a01:4f8:1c1c:4181::1\",\n
+        \                   \"comment\": \"\"\n                }\n            ],\n
+        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"docs/CNAME\",\n
+        \           \"name\": \"docs\",\n            \"type\": \"CNAME\",\n            \"ttl\":
+        3600,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
+        false\n            },\n            \"records\": [\n                {\n                    \"value\":
+        \"docs.example.com\",\n                    \"comment\": \"\"\n                }\n
+        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
+        \"@/NS\",\n            \"name\": \"@\",\n            \"type\": \"NS\",\n            \"ttl\":
         null,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
         false\n            },\n            \"records\": [\n                {\n                    \"value\":
         \"helium.ns.hetzner.de.\",\n                    \"comment\": \"\"\n                },\n
@@ -1576,7 +903,7 @@ interactions:
         \           \"type\": \"SOA\",\n            \"ttl\": null,\n            \"labels\":
         {},\n            \"protection\": {\n                \"change\": false\n            },\n
         \           \"records\": [\n                {\n                    \"value\":
-        \"hydrogen.ns.hetzner.com. dns.hetzner.com. 2026010127 86400 10800 3600000
+        \"hydrogen.ns.hetzner.com. dns.hetzner.com. 2026010798 86400 10800 3600000
         3600\",\n                    \"comment\": \"\"\n                }\n            ],\n
         \           \"zone\": 53091\n        },\n        {\n            \"id\": \"_acme-challenge.createrecordset/TXT\",\n
         \           \"name\": \"_acme-challenge.createrecordset\",\n            \"type\":
@@ -1635,6 +962,12 @@ interactions:
         {\n                \"change\": false\n            },\n            \"records\":
         [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
         \                   \"comment\": \"\"\n                }\n            ],\n
+        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"orig.testfull/TXT\",\n
+        \           \"name\": \"orig.testfull\",\n            \"type\": \"TXT\",\n
+        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
+        {\n                \"change\": false\n            },\n            \"records\":
+        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
+        \                   \"comment\": \"\"\n                }\n            ],\n
         \           \"zone\": 53091\n        },\n        {\n            \"id\": \"random.fqdntest/TXT\",\n
         \           \"name\": \"random.fqdntest\",\n            \"type\": \"TXT\",\n
         \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
@@ -1664,18 +997,6 @@ interactions:
         {\n                \"change\": false\n            },\n            \"records\":
         [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
         \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"updated.testfqdn/TXT\",\n
-        \           \"name\": \"updated.testfqdn\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"updated.testfull/TXT\",\n
-        \           \"name\": \"updated.testfull\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
         \           \"zone\": 53091\n        }\n    ]\n}"
     headers:
       Access-Control-Allow-Headers:
@@ -1693,29 +1014,30 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 29 Dec 2025 18:41:25 GMT
+      - Tue, 06 Jan 2026 15:43:29 GMT
       Link:
-      - <https://api.hetzner.cloud/v1/zones/53091/rrsets?page=1&per_page=25>; rel="last"
+      - <https://api.hetzner.cloud/v1/zones/53091/rrsets?page=2&per_page=25>; rel="next"
+      - <https://api.hetzner.cloud/v1/zones/53091/rrsets?page=2&per_page=25>; rel="last"
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Traceparent:
-      - 00-ae6ee7fe33cc9204b968bd52ecd56609-089df66c8e2da288-01
+      - 00-ed70b5ed884ebb35b2b2f8147d3b55c8-927783aac770fff4-01
       Transfer-Encoding:
       - chunked
       Uber-Trace-Id:
-      - ae6ee7fe33cc9204b968bd52ecd56609:089df66c8e2da288:0:1
+      - ed70b5ed884ebb35b2b2f8147d3b55c8:927783aac770fff4:0:1
       Vary:
       - Accept-Encoding
       X-Correlation-Id:
-      - ae6ee7fe33cc9204b968bd52ecd56609
+      - ed70b5ed884ebb35b2b2f8147d3b55c8
       content-length:
-      - '11424'
+      - '11899'
       ratelimit-limit:
       - '3600'
       ratelimit-remaining:
-      - '3570'
+      - '3564'
       ratelimit-reset:
-      - '1767033715'
+      - '1767714245'
     status:
       code: 200
       message: OK
@@ -1725,7 +1047,7 @@ interactions:
       Accept:
       - '*/*'
       Accept-Encoding:
-      - gzip, deflate
+      - gzip, deflate, zstd
       Connection:
       - keep-alive
       Content-Length:
@@ -1733,157 +1055,16 @@ interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - python-requests/2.32.3
+      - python-requests/2.32.5
     method: GET
-    uri: https://api.hetzner.cloud/v1/zones/53091/rrsets
+    uri: https://api.hetzner.cloud/v1/zones/53091/rrsets?page=2
   response:
     body:
       string: "{\n    \"meta\": {\n        \"pagination\": {\n            \"last_page\":
-        1,\n            \"next_page\": null,\n            \"page\": 1,\n            \"per_page\":
-        25,\n            \"previous_page\": null,\n            \"total_entries\":
-        24\n        }\n    },\n    \"rrsets\": [\n        {\n            \"id\": \"localhost/A\",\n
-        \           \"name\": \"localhost\",\n            \"type\": \"A\",\n            \"ttl\":
-        3600,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
-        false\n            },\n            \"records\": [\n                {\n                    \"value\":
-        \"127.0.0.1\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"nominatim/A\",\n            \"name\": \"nominatim\",\n            \"type\":
-        \"A\",\n            \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"128.140.58.208\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"osm.service.linke.projects/A\",\n
-        \           \"name\": \"osm.service.linke.projects\",\n            \"type\":
-        \"A\",\n            \"ttl\": 1800,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"195.201.131.78\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"nominatim/AAAA\",\n
-        \           \"name\": \"nominatim\",\n            \"type\": \"AAAA\",\n            \"ttl\":
-        3600,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
-        false\n            },\n            \"records\": [\n                {\n                    \"value\":
-        \"2a01:4f8:c012:9603::1\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"osm.service.linke.projects/AAAA\",\n            \"name\": \"osm.service.linke.projects\",\n
-        \           \"type\": \"AAAA\",\n            \"ttl\": 1800,\n            \"labels\":
-        {},\n            \"protection\": {\n                \"change\": false\n            },\n
-        \           \"records\": [\n                {\n                    \"value\":
-        \"2a01:4f8:1c1c:4181::1\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"docs/CNAME\",\n            \"name\": \"docs\",\n            \"type\": \"CNAME\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"docs.example.com\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"@/NS\",\n
-        \           \"name\": \"@\",\n            \"type\": \"NS\",\n            \"ttl\":
-        null,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
-        false\n            },\n            \"records\": [\n                {\n                    \"value\":
-        \"helium.ns.hetzner.de.\",\n                    \"comment\": \"\"\n                },\n
-        \               {\n                    \"value\": \"hydrogen.ns.hetzner.com.\",\n
-        \                   \"comment\": \"\"\n                },\n                {\n
-        \                   \"value\": \"oxygen.ns.hetzner.com.\",\n                    \"comment\":
-        \"\"\n                }\n            ],\n            \"zone\": 53091\n        },\n
-        \       {\n            \"id\": \"@/SOA\",\n            \"name\": \"@\",\n
-        \           \"type\": \"SOA\",\n            \"ttl\": null,\n            \"labels\":
-        {},\n            \"protection\": {\n                \"change\": false\n            },\n
-        \           \"records\": [\n                {\n                    \"value\":
-        \"hydrogen.ns.hetzner.com. dns.hetzner.com. 2026010127 86400 10800 3600000
-        3600\",\n                    \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"_acme-challenge.createrecordset/TXT\",\n
-        \           \"name\": \"_acme-challenge.createrecordset\",\n            \"type\":
-        \"TXT\",\n            \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken1\\\"\",\n
-        \                   \"comment\": \"\"\n                },\n                {\n
-        \                   \"value\": \"\\\"challengetoken2\\\"\",\n                    \"comment\":
-        \"\"\n                }\n            ],\n            \"zone\": 53091\n        },\n
-        \       {\n            \"id\": \"_acme-challenge.deleterecordinset/TXT\",\n
-        \           \"name\": \"_acme-challenge.deleterecordinset\",\n            \"type\":
-        \"TXT\",\n            \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken2\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"_acme-challenge.fqdn/TXT\",\n
-        \           \"name\": \"_acme-challenge.fqdn\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"_acme-challenge.full/TXT\",\n
-        \           \"name\": \"_acme-challenge.full\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"_acme-challenge.listrecordset/TXT\",\n
-        \           \"name\": \"_acme-challenge.listrecordset\",\n            \"type\":
-        \"TXT\",\n            \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken1\\\"\",\n
-        \                   \"comment\": \"\"\n                },\n                {\n
-        \                   \"value\": \"\\\"challengetoken2\\\"\",\n                    \"comment\":
-        \"\"\n                }\n            ],\n            \"zone\": 53091\n        },\n
-        \       {\n            \"id\": \"_acme-challenge.noop/TXT\",\n            \"name\":
-        \"_acme-challenge.noop\",\n            \"type\": \"TXT\",\n            \"ttl\":
-        3600,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
-        false\n            },\n            \"records\": [\n                {\n                    \"value\":
-        \"\\\"challengetoken\\\"\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"_acme-challenge.test/TXT\",\n            \"name\": \"_acme-challenge.test\",\n
-        \           \"type\": \"TXT\",\n            \"ttl\": 3600,\n            \"labels\":
-        {},\n            \"protection\": {\n                \"change\": false\n            },\n
-        \           \"records\": [\n                {\n                    \"value\":
-        \"\\\"challengetoken\\\"\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"orig.nameonly.test/TXT\",\n            \"name\": \"orig.nameonly.test\",\n
-        \           \"type\": \"TXT\",\n            \"ttl\": 3600,\n            \"labels\":
-        {},\n            \"protection\": {\n                \"change\": false\n            },\n
-        \           \"records\": [\n                {\n                    \"value\":
-        \"\\\"updated\\\"\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"orig.testfqdn/TXT\",\n            \"name\": \"orig.testfqdn\",\n            \"type\":
-        \"TXT\",\n            \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"random.fqdntest/TXT\",\n
-        \           \"name\": \"random.fqdntest\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"random.fulltest/TXT\",\n
-        \           \"name\": \"random.fulltest\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"random.test/TXT\",\n
-        \           \"name\": \"random.test\",\n            \"type\": \"TXT\",\n            \"ttl\":
-        3600,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
-        false\n            },\n            \"records\": [\n                {\n                    \"value\":
-        \"\\\"challengetoken\\\"\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"ttl.fqdn/TXT\",\n            \"name\": \"ttl.fqdn\",\n            \"type\":
-        \"TXT\",\n            \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"ttlshouldbe3600\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"updated.test/TXT\",\n
-        \           \"name\": \"updated.test\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"updated.testfqdn/TXT\",\n
+        1,\n            \"next_page\": null,\n            \"page\": 2,\n            \"per_page\":
+        25,\n            \"previous_page\": 1,\n            \"total_entries\": 1\n
+        \       }\n    },\n    \"rrsets\": [\n        {\n            \"id\": \"updated.testfqdn/TXT\",\n
         \           \"name\": \"updated.testfqdn\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"updated.testfull/TXT\",\n
-        \           \"name\": \"updated.testfull\",\n            \"type\": \"TXT\",\n
         \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
         {\n                \"change\": false\n            },\n            \"records\":
         [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
@@ -1905,453 +1086,30 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 29 Dec 2025 18:41:25 GMT
+      - Tue, 06 Jan 2026 15:43:29 GMT
       Link:
+      - <https://api.hetzner.cloud/v1/zones/53091/rrsets?page=1&per_page=25>; rel="prev"
       - <https://api.hetzner.cloud/v1/zones/53091/rrsets?page=1&per_page=25>; rel="last"
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Traceparent:
-      - 00-f1d7a46b21c18f6136e56cd1611b9e58-a2de37f8d5a11e4c-01
+      - 00-189697b9ef117b75c5763928825043f9-9cda6e045896cf3c-01
       Transfer-Encoding:
       - chunked
       Uber-Trace-Id:
-      - f1d7a46b21c18f6136e56cd1611b9e58:a2de37f8d5a11e4c:0:1
+      - 189697b9ef117b75c5763928825043f9:9cda6e045896cf3c:0:1
       Vary:
       - Accept-Encoding
       X-Correlation-Id:
-      - f1d7a46b21c18f6136e56cd1611b9e58
+      - 189697b9ef117b75c5763928825043f9
       content-length:
-      - '11424'
+      - '695'
       ratelimit-limit:
       - '3600'
       ratelimit-remaining:
-      - '3569'
+      - '3563'
       ratelimit-reset:
-      - '1767033716'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/53091/rrsets
-  response:
-    body:
-      string: "{\n    \"meta\": {\n        \"pagination\": {\n            \"last_page\":
-        1,\n            \"next_page\": null,\n            \"page\": 1,\n            \"per_page\":
-        25,\n            \"previous_page\": null,\n            \"total_entries\":
-        24\n        }\n    },\n    \"rrsets\": [\n        {\n            \"id\": \"localhost/A\",\n
-        \           \"name\": \"localhost\",\n            \"type\": \"A\",\n            \"ttl\":
-        3600,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
-        false\n            },\n            \"records\": [\n                {\n                    \"value\":
-        \"127.0.0.1\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"nominatim/A\",\n            \"name\": \"nominatim\",\n            \"type\":
-        \"A\",\n            \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"128.140.58.208\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"osm.service.linke.projects/A\",\n
-        \           \"name\": \"osm.service.linke.projects\",\n            \"type\":
-        \"A\",\n            \"ttl\": 1800,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"195.201.131.78\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"nominatim/AAAA\",\n
-        \           \"name\": \"nominatim\",\n            \"type\": \"AAAA\",\n            \"ttl\":
-        3600,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
-        false\n            },\n            \"records\": [\n                {\n                    \"value\":
-        \"2a01:4f8:c012:9603::1\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"osm.service.linke.projects/AAAA\",\n            \"name\": \"osm.service.linke.projects\",\n
-        \           \"type\": \"AAAA\",\n            \"ttl\": 1800,\n            \"labels\":
-        {},\n            \"protection\": {\n                \"change\": false\n            },\n
-        \           \"records\": [\n                {\n                    \"value\":
-        \"2a01:4f8:1c1c:4181::1\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"docs/CNAME\",\n            \"name\": \"docs\",\n            \"type\": \"CNAME\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"docs.example.com\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"@/NS\",\n
-        \           \"name\": \"@\",\n            \"type\": \"NS\",\n            \"ttl\":
-        null,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
-        false\n            },\n            \"records\": [\n                {\n                    \"value\":
-        \"helium.ns.hetzner.de.\",\n                    \"comment\": \"\"\n                },\n
-        \               {\n                    \"value\": \"hydrogen.ns.hetzner.com.\",\n
-        \                   \"comment\": \"\"\n                },\n                {\n
-        \                   \"value\": \"oxygen.ns.hetzner.com.\",\n                    \"comment\":
-        \"\"\n                }\n            ],\n            \"zone\": 53091\n        },\n
-        \       {\n            \"id\": \"@/SOA\",\n            \"name\": \"@\",\n
-        \           \"type\": \"SOA\",\n            \"ttl\": null,\n            \"labels\":
-        {},\n            \"protection\": {\n                \"change\": false\n            },\n
-        \           \"records\": [\n                {\n                    \"value\":
-        \"hydrogen.ns.hetzner.com. dns.hetzner.com. 2026010127 86400 10800 3600000
-        3600\",\n                    \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"_acme-challenge.createrecordset/TXT\",\n
-        \           \"name\": \"_acme-challenge.createrecordset\",\n            \"type\":
-        \"TXT\",\n            \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken1\\\"\",\n
-        \                   \"comment\": \"\"\n                },\n                {\n
-        \                   \"value\": \"\\\"challengetoken2\\\"\",\n                    \"comment\":
-        \"\"\n                }\n            ],\n            \"zone\": 53091\n        },\n
-        \       {\n            \"id\": \"_acme-challenge.deleterecordinset/TXT\",\n
-        \           \"name\": \"_acme-challenge.deleterecordinset\",\n            \"type\":
-        \"TXT\",\n            \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken2\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"_acme-challenge.fqdn/TXT\",\n
-        \           \"name\": \"_acme-challenge.fqdn\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"_acme-challenge.full/TXT\",\n
-        \           \"name\": \"_acme-challenge.full\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"_acme-challenge.listrecordset/TXT\",\n
-        \           \"name\": \"_acme-challenge.listrecordset\",\n            \"type\":
-        \"TXT\",\n            \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken1\\\"\",\n
-        \                   \"comment\": \"\"\n                },\n                {\n
-        \                   \"value\": \"\\\"challengetoken2\\\"\",\n                    \"comment\":
-        \"\"\n                }\n            ],\n            \"zone\": 53091\n        },\n
-        \       {\n            \"id\": \"_acme-challenge.noop/TXT\",\n            \"name\":
-        \"_acme-challenge.noop\",\n            \"type\": \"TXT\",\n            \"ttl\":
-        3600,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
-        false\n            },\n            \"records\": [\n                {\n                    \"value\":
-        \"\\\"challengetoken\\\"\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"_acme-challenge.test/TXT\",\n            \"name\": \"_acme-challenge.test\",\n
-        \           \"type\": \"TXT\",\n            \"ttl\": 3600,\n            \"labels\":
-        {},\n            \"protection\": {\n                \"change\": false\n            },\n
-        \           \"records\": [\n                {\n                    \"value\":
-        \"\\\"challengetoken\\\"\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"orig.nameonly.test/TXT\",\n            \"name\": \"orig.nameonly.test\",\n
-        \           \"type\": \"TXT\",\n            \"ttl\": 3600,\n            \"labels\":
-        {},\n            \"protection\": {\n                \"change\": false\n            },\n
-        \           \"records\": [\n                {\n                    \"value\":
-        \"\\\"updated\\\"\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"orig.testfqdn/TXT\",\n            \"name\": \"orig.testfqdn\",\n            \"type\":
-        \"TXT\",\n            \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"random.fqdntest/TXT\",\n
-        \           \"name\": \"random.fqdntest\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"random.fulltest/TXT\",\n
-        \           \"name\": \"random.fulltest\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"random.test/TXT\",\n
-        \           \"name\": \"random.test\",\n            \"type\": \"TXT\",\n            \"ttl\":
-        3600,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
-        false\n            },\n            \"records\": [\n                {\n                    \"value\":
-        \"\\\"challengetoken\\\"\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"ttl.fqdn/TXT\",\n            \"name\": \"ttl.fqdn\",\n            \"type\":
-        \"TXT\",\n            \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"ttlshouldbe3600\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"updated.test/TXT\",\n
-        \           \"name\": \"updated.test\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"updated.testfqdn/TXT\",\n
-        \           \"name\": \"updated.testfqdn\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"updated.testfull/TXT\",\n
-        \           \"name\": \"updated.testfull\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        }\n    ]\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:25 GMT
-      Link:
-      - <https://api.hetzner.cloud/v1/zones/53091/rrsets?page=1&per_page=25>; rel="last"
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-d0109cef09482d787d7f5c3c141d13f0-5cf772d7cfc97598-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - d0109cef09482d787d7f5c3c141d13f0:5cf772d7cfc97598:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - d0109cef09482d787d7f5c3c141d13f0
-      content-length:
-      - '11424'
-      ratelimit-limit:
-      - '3600'
-      ratelimit-remaining:
-      - '3568'
-      ratelimit-reset:
-      - '1767033717'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/53091/rrsets
-  response:
-    body:
-      string: "{\n    \"meta\": {\n        \"pagination\": {\n            \"last_page\":
-        1,\n            \"next_page\": null,\n            \"page\": 1,\n            \"per_page\":
-        25,\n            \"previous_page\": null,\n            \"total_entries\":
-        24\n        }\n    },\n    \"rrsets\": [\n        {\n            \"id\": \"localhost/A\",\n
-        \           \"name\": \"localhost\",\n            \"type\": \"A\",\n            \"ttl\":
-        3600,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
-        false\n            },\n            \"records\": [\n                {\n                    \"value\":
-        \"127.0.0.1\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"nominatim/A\",\n            \"name\": \"nominatim\",\n            \"type\":
-        \"A\",\n            \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"128.140.58.208\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"osm.service.linke.projects/A\",\n
-        \           \"name\": \"osm.service.linke.projects\",\n            \"type\":
-        \"A\",\n            \"ttl\": 1800,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"195.201.131.78\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"nominatim/AAAA\",\n
-        \           \"name\": \"nominatim\",\n            \"type\": \"AAAA\",\n            \"ttl\":
-        3600,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
-        false\n            },\n            \"records\": [\n                {\n                    \"value\":
-        \"2a01:4f8:c012:9603::1\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"osm.service.linke.projects/AAAA\",\n            \"name\": \"osm.service.linke.projects\",\n
-        \           \"type\": \"AAAA\",\n            \"ttl\": 1800,\n            \"labels\":
-        {},\n            \"protection\": {\n                \"change\": false\n            },\n
-        \           \"records\": [\n                {\n                    \"value\":
-        \"2a01:4f8:1c1c:4181::1\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"docs/CNAME\",\n            \"name\": \"docs\",\n            \"type\": \"CNAME\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"docs.example.com\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"@/NS\",\n
-        \           \"name\": \"@\",\n            \"type\": \"NS\",\n            \"ttl\":
-        null,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
-        false\n            },\n            \"records\": [\n                {\n                    \"value\":
-        \"helium.ns.hetzner.de.\",\n                    \"comment\": \"\"\n                },\n
-        \               {\n                    \"value\": \"hydrogen.ns.hetzner.com.\",\n
-        \                   \"comment\": \"\"\n                },\n                {\n
-        \                   \"value\": \"oxygen.ns.hetzner.com.\",\n                    \"comment\":
-        \"\"\n                }\n            ],\n            \"zone\": 53091\n        },\n
-        \       {\n            \"id\": \"@/SOA\",\n            \"name\": \"@\",\n
-        \           \"type\": \"SOA\",\n            \"ttl\": null,\n            \"labels\":
-        {},\n            \"protection\": {\n                \"change\": false\n            },\n
-        \           \"records\": [\n                {\n                    \"value\":
-        \"hydrogen.ns.hetzner.com. dns.hetzner.com. 2026010127 86400 10800 3600000
-        3600\",\n                    \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"_acme-challenge.createrecordset/TXT\",\n
-        \           \"name\": \"_acme-challenge.createrecordset\",\n            \"type\":
-        \"TXT\",\n            \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken1\\\"\",\n
-        \                   \"comment\": \"\"\n                },\n                {\n
-        \                   \"value\": \"\\\"challengetoken2\\\"\",\n                    \"comment\":
-        \"\"\n                }\n            ],\n            \"zone\": 53091\n        },\n
-        \       {\n            \"id\": \"_acme-challenge.deleterecordinset/TXT\",\n
-        \           \"name\": \"_acme-challenge.deleterecordinset\",\n            \"type\":
-        \"TXT\",\n            \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken2\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"_acme-challenge.fqdn/TXT\",\n
-        \           \"name\": \"_acme-challenge.fqdn\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"_acme-challenge.full/TXT\",\n
-        \           \"name\": \"_acme-challenge.full\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"_acme-challenge.listrecordset/TXT\",\n
-        \           \"name\": \"_acme-challenge.listrecordset\",\n            \"type\":
-        \"TXT\",\n            \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken1\\\"\",\n
-        \                   \"comment\": \"\"\n                },\n                {\n
-        \                   \"value\": \"\\\"challengetoken2\\\"\",\n                    \"comment\":
-        \"\"\n                }\n            ],\n            \"zone\": 53091\n        },\n
-        \       {\n            \"id\": \"_acme-challenge.noop/TXT\",\n            \"name\":
-        \"_acme-challenge.noop\",\n            \"type\": \"TXT\",\n            \"ttl\":
-        3600,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
-        false\n            },\n            \"records\": [\n                {\n                    \"value\":
-        \"\\\"challengetoken\\\"\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"_acme-challenge.test/TXT\",\n            \"name\": \"_acme-challenge.test\",\n
-        \           \"type\": \"TXT\",\n            \"ttl\": 3600,\n            \"labels\":
-        {},\n            \"protection\": {\n                \"change\": false\n            },\n
-        \           \"records\": [\n                {\n                    \"value\":
-        \"\\\"challengetoken\\\"\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"orig.nameonly.test/TXT\",\n            \"name\": \"orig.nameonly.test\",\n
-        \           \"type\": \"TXT\",\n            \"ttl\": 3600,\n            \"labels\":
-        {},\n            \"protection\": {\n                \"change\": false\n            },\n
-        \           \"records\": [\n                {\n                    \"value\":
-        \"\\\"updated\\\"\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"orig.testfqdn/TXT\",\n            \"name\": \"orig.testfqdn\",\n            \"type\":
-        \"TXT\",\n            \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"random.fqdntest/TXT\",\n
-        \           \"name\": \"random.fqdntest\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"random.fulltest/TXT\",\n
-        \           \"name\": \"random.fulltest\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"random.test/TXT\",\n
-        \           \"name\": \"random.test\",\n            \"type\": \"TXT\",\n            \"ttl\":
-        3600,\n            \"labels\": {},\n            \"protection\": {\n                \"change\":
-        false\n            },\n            \"records\": [\n                {\n                    \"value\":
-        \"\\\"challengetoken\\\"\",\n                    \"comment\": \"\"\n                }\n
-        \           ],\n            \"zone\": 53091\n        },\n        {\n            \"id\":
-        \"ttl.fqdn/TXT\",\n            \"name\": \"ttl.fqdn\",\n            \"type\":
-        \"TXT\",\n            \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"ttlshouldbe3600\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"updated.test/TXT\",\n
-        \           \"name\": \"updated.test\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"updated.testfqdn/TXT\",\n
-        \           \"name\": \"updated.testfqdn\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        },\n        {\n            \"id\": \"updated.testfull/TXT\",\n
-        \           \"name\": \"updated.testfull\",\n            \"type\": \"TXT\",\n
-        \           \"ttl\": 3600,\n            \"labels\": {},\n            \"protection\":
-        {\n                \"change\": false\n            },\n            \"records\":
-        [\n                {\n                    \"value\": \"\\\"challengetoken\\\"\",\n
-        \                   \"comment\": \"\"\n                }\n            ],\n
-        \           \"zone\": 53091\n        }\n    ]\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:26 GMT
-      Link:
-      - <https://api.hetzner.cloud/v1/zones/53091/rrsets?page=1&per_page=25>; rel="last"
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-ae49280e27d2cf97a9bd1affbcd5a4a4-aac86628569a0063-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - ae49280e27d2cf97a9bd1affbcd5a4a4:aac86628569a0063:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - ae49280e27d2cf97a9bd1affbcd5a4a4
-      content-length:
-      - '11424'
-      ratelimit-limit:
-      - '3600'
-      ratelimit-remaining:
-      - '3567'
-      ratelimit-reset:
-      - '1767033719'
+      - '1767714246'
     status:
       code: 200
       message: OK
@@ -2361,7 +1119,7 @@ interactions:
       Accept:
       - '*/*'
       Accept-Encoding:
-      - gzip, deflate
+      - gzip, deflate, zstd
       Connection:
       - keep-alive
       Content-Length:
@@ -2369,14 +1127,14 @@ interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - python-requests/2.32.3
+      - python-requests/2.32.5
     method: POST
     uri: https://api.hetzner.cloud/v1/zones/53091/rrsets/orig.testfqdn/TXT/actions/remove_records
   response:
     body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392582,\n        \"status\":
+      string: "{\n    \"action\": {\n        \"id\": 603554582835999,\n        \"status\":
         \"running\",\n        \"command\": \"remove_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:26Z\",\n        \"finished\":
+        0,\n        \"started\": \"2026-01-06T15:43:29Z\",\n        \"finished\":
         null,\n        \"error\": null,\n        \"resources\": [\n            {\n
         \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
         \       ]\n    }\n}"
@@ -2398,21 +1156,21 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 29 Dec 2025 18:41:26 GMT
+      - Tue, 06 Jan 2026 15:43:29 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Traceparent:
-      - 00-18aa2b6c5156cc6a1966fb0ce30f12cf-953fe068db154d0b-01
+      - 00-79e851c454f3f094c0ef44531193462b-592266f3baf615c5-01
       Uber-Trace-Id:
-      - 18aa2b6c5156cc6a1966fb0ce30f12cf:953fe068db154d0b:0:1
+      - 79e851c454f3f094c0ef44531193462b:592266f3baf615c5:0:1
       X-Correlation-Id:
-      - 18aa2b6c5156cc6a1966fb0ce30f12cf
+      - 79e851c454f3f094c0ef44531193462b
       ratelimit-limit:
       - '7200'
       ratelimit-remaining:
-      - '6323'
+      - '7190'
       ratelimit-reset:
-      - '1767034124'
+      - '1767714214'
     status:
       code: 201
       message: Created
@@ -2422,7 +1180,7 @@ interactions:
       Accept:
       - '*/*'
       Accept-Encoding:
-      - gzip, deflate
+      - gzip, deflate, zstd
       Connection:
       - keep-alive
       Content-Length:
@@ -2430,14 +1188,14 @@ interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - python-requests/2.32.3
+      - python-requests/2.32.5
     method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392582
+    uri: https://api.hetzner.cloud/v1/zones/actions/603554582835999
   response:
     body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392582,\n        \"status\":
+      string: "{\n    \"action\": {\n        \"id\": 603554582835999,\n        \"status\":
         \"running\",\n        \"command\": \"remove_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:26Z\",\n        \"finished\":
+        0,\n        \"started\": \"2026-01-06T15:43:29Z\",\n        \"finished\":
         null,\n        \"error\": null,\n        \"resources\": [\n            {\n
         \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
         \       ]\n    }\n}"
@@ -2457,27 +1215,27 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 29 Dec 2025 18:41:26 GMT
+      - Tue, 06 Jan 2026 15:43:30 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Traceparent:
-      - 00-eb626c194981fbf8ab34a0d2dd688a73-30969045edc68f9f-01
+      - 00-043ec45008e2c1429cf1213455de4ba4-7d7e5b75c3e9274c-01
       Transfer-Encoding:
       - chunked
       Uber-Trace-Id:
-      - eb626c194981fbf8ab34a0d2dd688a73:30969045edc68f9f:0:1
+      - 043ec45008e2c1429cf1213455de4ba4:7d7e5b75c3e9274c:0:1
       Vary:
       - Accept-Encoding
       X-Correlation-Id:
-      - eb626c194981fbf8ab34a0d2dd688a73
+      - 043ec45008e2c1429cf1213455de4ba4
       content-length:
       - '364'
       ratelimit-limit:
       - '7200'
       ratelimit-remaining:
-      - '6322'
+      - '7190'
       ratelimit-reset:
-      - '1767034125'
+      - '1767714215'
     status:
       code: 200
       message: OK
@@ -2487,7 +1245,7 @@ interactions:
       Accept:
       - '*/*'
       Accept-Encoding:
-      - gzip, deflate
+      - gzip, deflate, zstd
       Connection:
       - keep-alive
       Content-Length:
@@ -2495,14 +1253,14 @@ interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - python-requests/2.32.3
+      - python-requests/2.32.5
     method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392582
+    uri: https://api.hetzner.cloud/v1/zones/actions/603554582835999
   response:
     body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392582,\n        \"status\":
+      string: "{\n    \"action\": {\n        \"id\": 603554582835999,\n        \"status\":
         \"running\",\n        \"command\": \"remove_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:26Z\",\n        \"finished\":
+        50,\n        \"started\": \"2026-01-06T15:43:29Z\",\n        \"finished\":
         null,\n        \"error\": null,\n        \"resources\": [\n            {\n
         \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
         \       ]\n    }\n}"
@@ -2522,677 +1280,27 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 29 Dec 2025 18:41:26 GMT
+      - Tue, 06 Jan 2026 15:43:30 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Traceparent:
-      - 00-57381f5062586869ac0ad7868863b86b-bb9d904470302d17-01
+      - 00-f897e432f6e9a718ac02e4df686641f0-18b1563cbc2bd2da-01
       Transfer-Encoding:
       - chunked
       Uber-Trace-Id:
-      - 57381f5062586869ac0ad7868863b86b:bb9d904470302d17:0:1
+      - f897e432f6e9a718ac02e4df686641f0:18b1563cbc2bd2da:0:1
       Vary:
       - Accept-Encoding
       X-Correlation-Id:
-      - 57381f5062586869ac0ad7868863b86b
-      content-length:
-      - '364'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6321'
-      ratelimit-reset:
-      - '1767034125'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392582
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392582,\n        \"status\":
-        \"running\",\n        \"command\": \"remove_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:26Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:26 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-9e803e9b367e6e0bf4f13f03a4e8f275-2d71772a4bd0b1ff-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - 9e803e9b367e6e0bf4f13f03a4e8f275:2d71772a4bd0b1ff:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - 9e803e9b367e6e0bf4f13f03a4e8f275
-      content-length:
-      - '364'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6320'
-      ratelimit-reset:
-      - '1767034126'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392582
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392582,\n        \"status\":
-        \"running\",\n        \"command\": \"remove_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:26Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:26 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-4d628b7f6b29314751b7b35a56dc9311-58f63205ee37d9f8-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - 4d628b7f6b29314751b7b35a56dc9311:58f63205ee37d9f8:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - 4d628b7f6b29314751b7b35a56dc9311
-      content-length:
-      - '364'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6319'
-      ratelimit-reset:
-      - '1767034126'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392582
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392582,\n        \"status\":
-        \"running\",\n        \"command\": \"remove_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:26Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:26 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-ba363d7ac9087f62d5bf4a9c3df8b0a1-09a1952165e47f94-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - ba363d7ac9087f62d5bf4a9c3df8b0a1:09a1952165e47f94:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - ba363d7ac9087f62d5bf4a9c3df8b0a1
-      content-length:
-      - '364'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6318'
-      ratelimit-reset:
-      - '1767034127'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392582
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392582,\n        \"status\":
-        \"running\",\n        \"command\": \"remove_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:26Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:26 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-155cb37d3305673d3287f46da85d1f81-63e2445cb394c5b1-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - 155cb37d3305673d3287f46da85d1f81:63e2445cb394c5b1:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - 155cb37d3305673d3287f46da85d1f81
-      content-length:
-      - '364'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6317'
-      ratelimit-reset:
-      - '1767034128'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392582
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392582,\n        \"status\":
-        \"running\",\n        \"command\": \"remove_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:26Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:26 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-65fda503a9a87cc51636f65b04012590-b67403706db03f49-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - 65fda503a9a87cc51636f65b04012590:b67403706db03f49:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - 65fda503a9a87cc51636f65b04012590
-      content-length:
-      - '364'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6316'
-      ratelimit-reset:
-      - '1767034128'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392582
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392582,\n        \"status\":
-        \"running\",\n        \"command\": \"remove_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:26Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:26 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-32f8874ec4df362d6aeae950d60e01dd-2de3b3fa47371ff0-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - 32f8874ec4df362d6aeae950d60e01dd:2de3b3fa47371ff0:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - 32f8874ec4df362d6aeae950d60e01dd
-      content-length:
-      - '364'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6315'
-      ratelimit-reset:
-      - '1767034129'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392582
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392582,\n        \"status\":
-        \"running\",\n        \"command\": \"remove_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:26Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:26 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-d3b907d5c9a7642b6b4274bc9f5647ec-be3a9ca8793aace3-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - d3b907d5c9a7642b6b4274bc9f5647ec:be3a9ca8793aace3:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - d3b907d5c9a7642b6b4274bc9f5647ec
-      content-length:
-      - '364'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6314'
-      ratelimit-reset:
-      - '1767034129'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392582
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392582,\n        \"status\":
-        \"running\",\n        \"command\": \"remove_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:26Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:27 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-9bf6eefc754e720533040b6ca03b9b5e-02e14f700714770a-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - 9bf6eefc754e720533040b6ca03b9b5e:02e14f700714770a:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - 9bf6eefc754e720533040b6ca03b9b5e
-      content-length:
-      - '364'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6313'
-      ratelimit-reset:
-      - '1767034130'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392582
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392582,\n        \"status\":
-        \"running\",\n        \"command\": \"remove_rrset_records\",\n        \"progress\":
-        0,\n        \"started\": \"2025-12-29T18:41:26Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:27 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-bee998b60b5a678a5872888f183df7cf-39637c256c242906-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - bee998b60b5a678a5872888f183df7cf:39637c256c242906:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - bee998b60b5a678a5872888f183df7cf
-      content-length:
-      - '364'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6312'
-      ratelimit-reset:
-      - '1767034131'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392582
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392582,\n        \"status\":
-        \"running\",\n        \"command\": \"remove_rrset_records\",\n        \"progress\":
-        50,\n        \"started\": \"2025-12-29T18:41:26Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:27 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-077a24b29ecceab2df48c0a6b0e6e773-3d56314e36ea0ee9-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - 077a24b29ecceab2df48c0a6b0e6e773:3d56314e36ea0ee9:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - 077a24b29ecceab2df48c0a6b0e6e773
+      - f897e432f6e9a718ac02e4df686641f0
       content-length:
       - '365'
       ratelimit-limit:
       - '7200'
       ratelimit-remaining:
-      - '6311'
+      - '7190'
       ratelimit-reset:
-      - '1767034131'
+      - '1767714215'
     status:
       code: 200
       message: OK
@@ -3202,7 +1310,7 @@ interactions:
       Accept:
       - '*/*'
       Accept-Encoding:
-      - gzip, deflate
+      - gzip, deflate, zstd
       Connection:
       - keep-alive
       Content-Length:
@@ -3210,275 +1318,15 @@ interactions:
       Content-Type:
       - application/json
       User-Agent:
-      - python-requests/2.32.3
+      - python-requests/2.32.5
     method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392582
+    uri: https://api.hetzner.cloud/v1/zones/actions/603554582835999
   response:
     body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392582,\n        \"status\":
-        \"running\",\n        \"command\": \"remove_rrset_records\",\n        \"progress\":
-        50,\n        \"started\": \"2025-12-29T18:41:26Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:27 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-7b1e75715c34212e66e96932320fa02f-2dda1d284afb683f-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - 7b1e75715c34212e66e96932320fa02f:2dda1d284afb683f:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - 7b1e75715c34212e66e96932320fa02f
-      content-length:
-      - '365'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6310'
-      ratelimit-reset:
-      - '1767034132'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392582
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392582,\n        \"status\":
-        \"running\",\n        \"command\": \"remove_rrset_records\",\n        \"progress\":
-        50,\n        \"started\": \"2025-12-29T18:41:26Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:27 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-0bef756489826250d11d027f16d0a6ec-f8cc17acaa0497e2-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - 0bef756489826250d11d027f16d0a6ec:f8cc17acaa0497e2:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - 0bef756489826250d11d027f16d0a6ec
-      content-length:
-      - '365'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6309'
-      ratelimit-reset:
-      - '1767034132'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392582
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392582,\n        \"status\":
-        \"running\",\n        \"command\": \"remove_rrset_records\",\n        \"progress\":
-        50,\n        \"started\": \"2025-12-29T18:41:26Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:27 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-127ca3fbe1dc724f270b2313394fe28c-eb11302f6f44b534-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - 127ca3fbe1dc724f270b2313394fe28c:eb11302f6f44b534:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - 127ca3fbe1dc724f270b2313394fe28c
-      content-length:
-      - '365'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6308'
-      ratelimit-reset:
-      - '1767034133'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392582
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392582,\n        \"status\":
-        \"running\",\n        \"command\": \"remove_rrset_records\",\n        \"progress\":
-        50,\n        \"started\": \"2025-12-29T18:41:26Z\",\n        \"finished\":
-        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
-        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
-        \       ]\n    }\n}"
-    headers:
-      Access-Control-Allow-Headers:
-      - X-Requested-With,Authorization,Content-Type
-      Access-Control-Allow-Methods:
-      - OPTIONS,GET,POST,PUT,PATCH,DELETE
-      Access-Control-Allow-Origin:
-      - '*'
-      Access-Control-Expose-Headers:
-      - Link,X-Correlation-ID
-      Access-Control-Max-Age:
-      - '86400'
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Date:
-      - Mon, 29 Dec 2025 18:41:27 GMT
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
-      Traceparent:
-      - 00-02bc4727efa63264807e9ebc0d701156-e301c43d9d7b414f-01
-      Transfer-Encoding:
-      - chunked
-      Uber-Trace-Id:
-      - 02bc4727efa63264807e9ebc0d701156:e301c43d9d7b414f:0:1
-      Vary:
-      - Accept-Encoding
-      X-Correlation-Id:
-      - 02bc4727efa63264807e9ebc0d701156
-      content-length:
-      - '365'
-      ratelimit-limit:
-      - '7200'
-      ratelimit-remaining:
-      - '6307'
-      ratelimit-reset:
-      - '1767034134'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{}'
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '2'
-      Content-Type:
-      - application/json
-      User-Agent:
-      - python-requests/2.32.3
-    method: GET
-    uri: https://api.hetzner.cloud/v1/zones/actions/601931085392582
-  response:
-    body:
-      string: "{\n    \"action\": {\n        \"id\": 601931085392582,\n        \"status\":
+      string: "{\n    \"action\": {\n        \"id\": 603554582835999,\n        \"status\":
         \"success\",\n        \"command\": \"remove_rrset_records\",\n        \"progress\":
-        100,\n        \"started\": \"2025-12-29T18:41:26Z\",\n        \"finished\":
-        \"2025-12-29T18:41:27Z\",\n        \"error\": null,\n        \"resources\":
+        100,\n        \"started\": \"2026-01-06T15:43:29Z\",\n        \"finished\":
+        \"2026-01-06T15:43:31Z\",\n        \"error\": null,\n        \"resources\":
         [\n            {\n                \"id\": 53091,\n                \"type\":
         \"zone\"\n            }\n        ]\n    }\n}"
     headers:
@@ -3497,27 +1345,283 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 29 Dec 2025 18:41:27 GMT
+      - Tue, 06 Jan 2026 15:43:31 GMT
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains
       Traceparent:
-      - 00-f678432682a28a84e52dd3f9f1cceee1-e9e5c20e8aed90e4-01
+      - 00-736f802d504763cb7e06487fcbcbcdf5-b4e19d9b00b91056-01
       Transfer-Encoding:
       - chunked
       Uber-Trace-Id:
-      - f678432682a28a84e52dd3f9f1cceee1:e9e5c20e8aed90e4:0:1
+      - 736f802d504763cb7e06487fcbcbcdf5:b4e19d9b00b91056:0:1
       Vary:
       - Accept-Encoding
       X-Correlation-Id:
-      - f678432682a28a84e52dd3f9f1cceee1
+      - 736f802d504763cb7e06487fcbcbcdf5
       content-length:
       - '384'
       ratelimit-limit:
       - '7200'
       ratelimit-remaining:
-      - '6306'
+      - '7190'
       ratelimit-reset:
-      - '1767034134'
+      - '1767714216'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"records": [{"value": "\"challengetoken\""}]}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, zstd
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '46'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.32.5
+    method: POST
+    uri: https://api.hetzner.cloud/v1/zones/53091/rrsets/updated.testfqdn/TXT/actions/set_records
+  response:
+    body:
+      string: "{\n    \"action\": {\n        \"id\": 603554582836008,\n        \"status\":
+        \"running\",\n        \"command\": \"set_rrset_records\",\n        \"progress\":
+        0,\n        \"started\": \"2026-01-06T15:43:31Z\",\n        \"finished\":
+        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
+        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
+        \       ]\n    }\n}"
+    headers:
+      Access-Control-Allow-Headers:
+      - X-Requested-With,Authorization,Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET,POST,PUT,PATCH,DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - Link,X-Correlation-ID
+      Access-Control-Max-Age:
+      - '86400'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '361'
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 06 Jan 2026 15:43:31 GMT
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Traceparent:
+      - 00-a1883cdbe332441fc3c58899791757d3-7648b54cfaf9d819-01
+      Uber-Trace-Id:
+      - a1883cdbe332441fc3c58899791757d3:7648b54cfaf9d819:0:1
+      X-Correlation-Id:
+      - a1883cdbe332441fc3c58899791757d3
+      ratelimit-limit:
+      - '7200'
+      ratelimit-remaining:
+      - '7189'
+      ratelimit-reset:
+      - '1767714216'
+    status:
+      code: 201
+      message: Created
+- request:
+    body: '{}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, zstd
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '2'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.32.5
+    method: GET
+    uri: https://api.hetzner.cloud/v1/zones/actions/603554582836008
+  response:
+    body:
+      string: "{\n    \"action\": {\n        \"id\": 603554582836008,\n        \"status\":
+        \"running\",\n        \"command\": \"set_rrset_records\",\n        \"progress\":
+        0,\n        \"started\": \"2026-01-06T15:43:31Z\",\n        \"finished\":
+        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
+        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
+        \       ]\n    }\n}"
+    headers:
+      Access-Control-Allow-Headers:
+      - X-Requested-With,Authorization,Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET,POST,PUT,PATCH,DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - Link,X-Correlation-ID
+      Access-Control-Max-Age:
+      - '86400'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 06 Jan 2026 15:43:32 GMT
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Traceparent:
+      - 00-d9d9becc23bc95d209c0bcd997ed1ccf-cf8bd2875b40ecc4-01
+      Transfer-Encoding:
+      - chunked
+      Uber-Trace-Id:
+      - d9d9becc23bc95d209c0bcd997ed1ccf:cf8bd2875b40ecc4:0:1
+      Vary:
+      - Accept-Encoding
+      X-Correlation-Id:
+      - d9d9becc23bc95d209c0bcd997ed1ccf
+      content-length:
+      - '361'
+      ratelimit-limit:
+      - '7200'
+      ratelimit-remaining:
+      - '7189'
+      ratelimit-reset:
+      - '1767714217'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, zstd
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '2'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.32.5
+    method: GET
+    uri: https://api.hetzner.cloud/v1/zones/actions/603554582836008
+  response:
+    body:
+      string: "{\n    \"action\": {\n        \"id\": 603554582836008,\n        \"status\":
+        \"running\",\n        \"command\": \"set_rrset_records\",\n        \"progress\":
+        50,\n        \"started\": \"2026-01-06T15:43:31Z\",\n        \"finished\":
+        null,\n        \"error\": null,\n        \"resources\": [\n            {\n
+        \               \"id\": 53091,\n                \"type\": \"zone\"\n            }\n
+        \       ]\n    }\n}"
+    headers:
+      Access-Control-Allow-Headers:
+      - X-Requested-With,Authorization,Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET,POST,PUT,PATCH,DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - Link,X-Correlation-ID
+      Access-Control-Max-Age:
+      - '86400'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 06 Jan 2026 15:43:32 GMT
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Traceparent:
+      - 00-dfb4a6e3ccda5bd6cfde0bf4fecedaf6-721f0816bfe7849a-01
+      Transfer-Encoding:
+      - chunked
+      Uber-Trace-Id:
+      - dfb4a6e3ccda5bd6cfde0bf4fecedaf6:721f0816bfe7849a:0:1
+      Vary:
+      - Accept-Encoding
+      X-Correlation-Id:
+      - dfb4a6e3ccda5bd6cfde0bf4fecedaf6
+      content-length:
+      - '362'
+      ratelimit-limit:
+      - '7200'
+      ratelimit-remaining:
+      - '7189'
+      ratelimit-reset:
+      - '1767714218'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, zstd
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '2'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.32.5
+    method: GET
+    uri: https://api.hetzner.cloud/v1/zones/actions/603554582836008
+  response:
+    body:
+      string: "{\n    \"action\": {\n        \"id\": 603554582836008,\n        \"status\":
+        \"success\",\n        \"command\": \"set_rrset_records\",\n        \"progress\":
+        100,\n        \"started\": \"2026-01-06T15:43:31Z\",\n        \"finished\":
+        \"2026-01-06T15:43:33Z\",\n        \"error\": null,\n        \"resources\":
+        [\n            {\n                \"id\": 53091,\n                \"type\":
+        \"zone\"\n            }\n        ]\n    }\n}"
+    headers:
+      Access-Control-Allow-Headers:
+      - X-Requested-With,Authorization,Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET,POST,PUT,PATCH,DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - Link,X-Correlation-ID
+      Access-Control-Max-Age:
+      - '86400'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 06 Jan 2026 15:43:33 GMT
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Traceparent:
+      - 00-baa5a5b25c63fc87be9aa52eca5ffa4b-c4e39b75a13d8f7d-01
+      Transfer-Encoding:
+      - chunked
+      Uber-Trace-Id:
+      - baa5a5b25c63fc87be9aa52eca5ffa4b:c4e39b75a13d8f7d:0:1
+      Vary:
+      - Accept-Encoding
+      X-Correlation-Id:
+      - baa5a5b25c63fc87be9aa52eca5ffa4b
+      content-length:
+      - '381'
+      ratelimit-limit:
+      - '7200'
+      ratelimit-remaining:
+      - '7189'
+      ratelimit-reset:
+      - '1767714218'
     status:
       code: 200
       message: OK

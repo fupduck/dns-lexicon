@@ -483,8 +483,11 @@ class HetznerCloud(BaseProvider):
     def _records_from(self, rtype: str, content: str) -> list[Record]:
         if rtype == 'TXT':
             escaped_content = content.replace("\"", "\\\"")
-            return list(map(
-                lambda string: Record({"value": f'"{string}"'}),
-                wrap(escaped_content, 255)
-            ))
+
+            parts = []
+            for start in range(0, len(escaped_content), 255):
+                end = min(start + 255, len(escaped_content))
+                parts.append('"' + escaped_content[start:end] + '"')
+            content = " ".join(parts)
+
         return [{ "value": content }]

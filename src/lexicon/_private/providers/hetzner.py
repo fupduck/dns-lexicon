@@ -471,14 +471,20 @@ class HetznerCloud(BaseProvider):
             {
                 "id": rrset["id"],
                 "name": self._full_name(rrset["name"]),
-                "content": record["value"]
-                if rrset["type"] != "TXT"
-                else record["value"].removeprefix('"').removesuffix('"').replace('\\"', '"'),
+                "content": self._get_content_from_record(record['type'], record['value']),
                 "type": rrset["type"],
                 "ttl": rrset["ttl"],
             }
             for record in rrset["records"]
         ]
+
+    def _get_content_from_record(self, rtype: str, content: str):
+        if rtype == "TXT":
+            return content.removeprefix('"')\
+                .removesuffix('"')\
+                .replace('" "', '')\
+                .replace('\\"', '"')
+        return content
 
     def _records_from(self, rtype: str, content: str) -> list[Record]:
         if rtype == 'TXT':
